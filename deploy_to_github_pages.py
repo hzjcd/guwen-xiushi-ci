@@ -134,7 +134,7 @@ def check_required_files():
     """检查必要文件是否存在（自动模式）"""
     print("检查必要文件...")
     
-    files_to_check = ['wz.html', 'zz.html']
+    files_to_check = ['wz.html']
     missing_files = []
     
     for file in files_to_check:
@@ -176,10 +176,28 @@ def initialize_git_repo():
         print("❌ Git仓库初始化失败！")
         return False
 
+def remove_zz_file():
+    """从Git仓库中移除zz.html文件"""
+    print("从Git仓库中移除zz.html文件...")
+    # 检查zz.html是否在Git跟踪中
+    result = run_command("git ls-files | grep zz.html")
+    if result['stdout'].strip() == 'zz.html':
+        # 从Git中移除文件
+        result = run_command("git rm zz.html")
+        if result['returncode'] == 0:
+            print("✅ 成功从Git仓库中移除zz.html文件")
+            return True
+        else:
+            print(f"❌ 从Git仓库中移除zz.html文件失败: {result['stderr']}")
+            return False
+    else:
+        print("ℹ️ zz.html文件不在Git仓库中，跳过移除操作")
+        return True
+
 def add_and_commit_files():
     """添加文件并提交"""
     print("添加文件到Git...")
-    result = run_command("git add wz.html zz.html .gitignore")
+    result = run_command("git add wz.html .gitignore")
     
     if result['returncode'] != 0:
         print("⚠️ 添加文件可能失败，尝试添加所有文件")
@@ -305,12 +323,11 @@ def show_github_pages_instructions(username, repo_name):
     print("5. 稍等几分钟，GitHub Pages会自动构建你的站点")
     
     print("\n✅ 部署成功后，你的页面将可以通过以下地址访问：")
-    print(f"• 主页面: https://{username}.github.io/{repo_name}/wz.html")
-    print(f"• 第二个页面: https://{username}.github.io/{repo_name}/zz.html")
+    print(f"https://{username}.github.io/{repo_name}/wz.html")
     
     print("\n🔄 后续更新步骤：")
-    print("1. 修改本地文件(wz.html或zz.html)")
-    print("2. 运行: git add wz.html zz.html")
+    print("1. 修改本地wz.html文件")
+    print("2. 运行: git add wz.html")
     print("3. 运行: git commit -m '更新内容'")
     print("4. 运行: git push origin main")
     print("5. 等待GitHub Pages重新构建")
@@ -335,6 +352,11 @@ def main():
     print_title("准备工作")
     check_git_credentials()
     
+    # 从Git仓库中移除zz.html文件
+    if not remove_zz_file():
+        print("\n❌ 部署失败：无法移除zz.html文件")
+        return
+        
     if not check_required_files():
         print("\n❌ 部署失败：缺少必要文件")
         return

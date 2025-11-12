@@ -57,23 +57,33 @@ def start_server(port=8000):
 
 # 为GitHub Pages链接生成二维码
 
-def generate_github_qrcode(github_url="https://hzjcd.github.io/guwen-xiushi-ci/wz.html"):
+def generate_github_qrcode(page="wz"):
     """
-    为指定的GitHub Pages链接生成二维码
+    为GitHub Pages链接生成二维码
     
     Args:
-        github_url: GitHub Pages链接，默认为已部署的古文虚实词练习页面
+        page: 页面类型，可选值为'wz'(默认)或'zz'
     """
     print(f"\n正在为GitHub Pages链接生成二维码...")
+    
+    # 根据参数选择页面
+    if page == "zz":
+        github_url = "https://hzjcd.github.io/guwen-xiushi-ci/zz.html"
+        qr_filename = "github_pages_zz_qrcode.png"
+        page_name = "古文辨析练习第二页面"
+    else:
+        github_url = "https://hzjcd.github.io/guwen-xiushi-ci/wz.html"
+        qr_filename = "github_pages_qrcode.png"
+        page_name = "古文虚实词练习页面"
+    
     print(f"链接地址: {github_url}")
     
     # 生成二维码
-    qr_filename = "github_pages_qrcode.png"
     generate_qrcode(github_url, qr_filename)
     
     print(f"\n二维码使用说明:")
     print(f"1. 使用手机或其他设备的相机扫描二维码")
-    print(f"2. 扫描后将自动跳转到古文虚实词练习页面")
+    print(f"2. 扫描后将自动跳转到{page_name}")
     print(f"3. 二维码图片已保存为: {qr_filename}")
     print(f"4. 您可以将此二维码分享给他人，方便访问网页")
 
@@ -91,22 +101,24 @@ if __name__ == "__main__":
     
     # 如果有命令行参数，检查是否需要直接生成GitHub Pages二维码
     if len(sys.argv) > 1 and sys.argv[1] == "--github":
-        # 直接生成GitHub Pages链接的二维码
-        github_url = "https://hzjcd.github.io/guwen-xiushi-ci/wz.html"
-        if len(sys.argv) > 2:
-            github_url = sys.argv[2]
-        generate_github_qrcode(github_url)
+        # 检查是否有第二个参数指定页面
+        page = sys.argv[2] if len(sys.argv) > 2 and sys.argv[2] == "zz" else "wz"
+        generate_github_qrcode(page)
     else:
         # 显示菜单供用户选择
         print("=== 二维码生成工具 ===")
-        print("1. 生成GitHub Pages链接的二维码")
-        print("2. 启动本地服务器并生成本地链接的二维码")
+        print("1. 生成GitHub Pages链接的二维码 (wz.html)")
+        print("2. 生成GitHub Pages链接的二维码 (zz.html)")
+        print("3. 启动本地服务器并生成本地链接的二维码")
         
-        choice = input("请选择操作 (1/2): ")
+        choice = input("请选择操作 (1/2/3): ")
         
         if choice == "1":
-            # 生成GitHub Pages二维码
-            generate_github_qrcode()
+            # 生成GitHub Pages二维码 (wz.html)
+            generate_github_qrcode("wz")
+        elif choice == "2":
+            # 生成GitHub Pages二维码 (zz.html)
+            generate_github_qrcode("zz")
         else:
             # 启动本地服务器
             start_server()
