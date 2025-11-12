@@ -134,7 +134,7 @@ def check_required_files():
     """检查必要文件是否存在（自动模式）"""
     print("检查必要文件...")
     
-    files_to_check = ['wz.html']
+    files_to_check = ['wz.html', 'zz.html']
     missing_files = []
     
     for file in files_to_check:
@@ -179,7 +179,7 @@ def initialize_git_repo():
 def add_and_commit_files():
     """添加文件并提交"""
     print("添加文件到Git...")
-    result = run_command("git add wz.html .gitignore")
+    result = run_command("git add wz.html zz.html .gitignore")
     
     if result['returncode'] != 0:
         print("⚠️ 添加文件可能失败，尝试添加所有文件")
@@ -305,11 +305,12 @@ def show_github_pages_instructions(username, repo_name):
     print("5. 稍等几分钟，GitHub Pages会自动构建你的站点")
     
     print("\n✅ 部署成功后，你的页面将可以通过以下地址访问：")
-    print(f"https://{username}.github.io/{repo_name}/wz.html")
+    print(f"• 主页面: https://{username}.github.io/{repo_name}/wz.html")
+    print(f"• 第二个页面: https://{username}.github.io/{repo_name}/zz.html")
     
     print("\n🔄 后续更新步骤：")
-    print("1. 修改本地wz.html文件")
-    print("2. 运行: git add wz.html")
+    print("1. 修改本地文件(wz.html或zz.html)")
+    print("2. 运行: git add wz.html zz.html")
     print("3. 运行: git commit -m '更新内容'")
     print("4. 运行: git push origin main")
     print("5. 等待GitHub Pages重新构建")

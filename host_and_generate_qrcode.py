@@ -5,6 +5,7 @@ import socket
 import os
 import webbrowser
 from urllib.parse import urlparse
+import sys
 
 # 获取本地IP地址
 def get_local_ip():
@@ -54,6 +55,28 @@ def start_server(port=8000):
         except KeyboardInterrupt:
             print("\n服务器已停止")
 
+# 为GitHub Pages链接生成二维码
+
+def generate_github_qrcode(github_url="https://hzjcd.github.io/guwen-xiushi-ci/wz.html"):
+    """
+    为指定的GitHub Pages链接生成二维码
+    
+    Args:
+        github_url: GitHub Pages链接，默认为已部署的古文虚实词练习页面
+    """
+    print(f"\n正在为GitHub Pages链接生成二维码...")
+    print(f"链接地址: {github_url}")
+    
+    # 生成二维码
+    qr_filename = "github_pages_qrcode.png"
+    generate_qrcode(github_url, qr_filename)
+    
+    print(f"\n二维码使用说明:")
+    print(f"1. 使用手机或其他设备的相机扫描二维码")
+    print(f"2. 扫描后将自动跳转到古文虚实词练习页面")
+    print(f"3. 二维码图片已保存为: {qr_filename}")
+    print(f"4. 您可以将此二维码分享给他人，方便访问网页")
+
 if __name__ == "__main__":
     # 检查是否安装了qrcode库
     try:
@@ -66,5 +89,24 @@ if __name__ == "__main__":
     # 切换到当前目录
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     
-    # 启动服务器
-    start_server()
+    # 如果有命令行参数，检查是否需要直接生成GitHub Pages二维码
+    if len(sys.argv) > 1 and sys.argv[1] == "--github":
+        # 直接生成GitHub Pages链接的二维码
+        github_url = "https://hzjcd.github.io/guwen-xiushi-ci/wz.html"
+        if len(sys.argv) > 2:
+            github_url = sys.argv[2]
+        generate_github_qrcode(github_url)
+    else:
+        # 显示菜单供用户选择
+        print("=== 二维码生成工具 ===")
+        print("1. 生成GitHub Pages链接的二维码")
+        print("2. 启动本地服务器并生成本地链接的二维码")
+        
+        choice = input("请选择操作 (1/2): ")
+        
+        if choice == "1":
+            # 生成GitHub Pages二维码
+            generate_github_qrcode()
+        else:
+            # 启动本地服务器
+            start_server()
