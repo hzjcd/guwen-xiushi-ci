@@ -33,3 +33,6 @@ lerna-debug.log*
 
 # 其他
 qrcode.png
+github_pages_qrcode.png
+github_pages_zz_qrcode.png
+qrcodes/
