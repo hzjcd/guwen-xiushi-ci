@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 阴</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">阴</span>字练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "阴"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "阴"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词性与词义</h3>
+            
+            <div class="space-y-8 pl-2">
+              <p class="font-medium text-lg">阴（yīn）</p>
+              
+              <!-- 名词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">（名词）</p>
+                
+                <div class="pl-4 space-y-4 mt-2">
+                  <div>
+                    <p class="font-medium">① 山的北面，水的南面</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：达于汉阴(汉水南岸)。（《列子·汤问》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 泛指北面</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：洞霞飘素练，藓壁画阴窗。（唐·李质《宿日观东房诗》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 指秋冬季节</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：月是夜秋镜，寒为寂寞资。（唐·元稹《初寒夜寄卢子蒙》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 日影；阴影</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：树林阴翳。（宋·欧阳修《醉翁亭记》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑤ 雨</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：日西则景朝多阴。（《周礼·大司徒》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑥ 水</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：阴池幽流，玄泉冽清。（《文选·张衡·东京赋》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑦ 月亮</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：日为阳，月为阴。（《素问》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑧ 妇人</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：弼佐王风，克柔阴化。（隋·江总《为陈六宫谢章》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑨ 坟，墓</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：琢文阴壤，庶永后希。（宋·苏舜钦《广陵郡太君志铭》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑩ 天空中十分之八以上的部分被中低云量占住叫做阴</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：浮云为我阴，悲风为我旋。（元·关汉卿《窦娥冤》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑪ 云块</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：浮云为我阴，悲风为我旋。（元·关汉卿《窦娥冤》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑫ 鬼怪</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：群山四渎，暮天晴、挥斥阴魔潜伏。（金·丘处机《无俗念·述怀》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑬ 中国古代哲学认为宇宙中贯通物质和人事的两大对立面之一(跟"阳"相对)</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：一阴一阳之谓道。（《易·系辞上》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 形容词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">（形容词）</p>
+                
+                <div class="pl-4 space-y-4 mt-2">
+                  <div>
+                    <p class="font-medium">① 幽暗；昏暗</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：阴径红桃落，秋坛白石生。（唐·姚合《游昊天玄都观》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 阴险</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：器性阴刻乐祸，残忍寡恩。（《旧唐书·崔器传》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 冷，寒冷</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：阴风怒号，浊浪排空。（宋·范仲淹《岳阳楼记》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 阴湿；潮湿</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：徽州世出墨工，多佳墨，云以置灰中，则阴润不能坏也。（宋·庄季裕《鸡肋编》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑤ 偶数</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：禹铸九鼎，五者以应阳法，四者以象阴数。（晋·王嘉《拾遗记》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑥ 隐藏的，不露在外面的</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：阴血周作。（《左传·僖公十五年》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 副词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">（副词）</p>
+                
+                <div class="pl-4 space-y-4 mt-2">
+                  <div>
+                    <p class="font-medium">① 暗中，暗地里</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：阴相与谋。（《汉书·李广苏建传》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"阴"读yīn，是多义词，可作名词、形容词和副词</li>
+              <li>作名词时最常见含义是"山的北面，水的南面"，与"阳"（山南水北）相对</li>
+              <li>在古代哲学中，"阴"与"阳"构成一对基本矛盾，代表事物的两个对立面</li>
+              <li>作形容词时多表示"幽暗、阴冷、阴险"等含义</li>
+              <li>作副词时表示"暗中、暗地里"，用于描述隐秘的行为</li>
+              <li>判断词义时需结合上下文，特别注意与"阳"相对的含义</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-2"><span class="font-bold">读音：</span><span id="pronunciation" class="text-blue-600">yīn</span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"阴"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "名词",
+        pronunciation: "yīn",
+        sentence: "达于汉阴。（《列子·汤问》）",
+        targetWord: "阴",
+        options: {
+          A: "山的北面",
+          B: "水的南面",
+          C: "阴暗处"
+        },
+        correct: "B",
+        explanation: "“阴”在这里作名词，意为“水的南面”，“汉阴”指汉水的南岸。古代以山北水南为阴，山南水北为阳。",
+        examples: [
+          "泰山之阳，汶水西流；其阴，济水东流。（清·姚鼐《登泰山记》）",
+          "江阴县北临长江，故得名。（《读史方舆纪要》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "形容词",
+        pronunciation: "yīn",
+        sentence: "阴风怒号，浊浪排空。（宋·范仲淹《岳阳楼记》）",
+        targetWord: "阴",
+        options: {
+          A: "阴险的",
+          B: "寒冷的",
+          C: "昏暗的"
+        },
+        correct: "B",
+        explanation: "“阴”在这里作形容词，意为“寒冷的”，形容寒风猛烈地呼啸，浑浊的浪冲向天空。",
+        examples: [
+          "阴风寒气，侵入肌骨。（《太平广记》）",
+          "阴冬之月，滴水成冰。（《齐民要术》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "名词",
+        pronunciation: "yīn",
+        sentence: "树林阴翳。（宋·欧阳修《醉翁亭记》）",
+        targetWord: "阴",
+        options: {
+          A: "阴影",
+          B: "阴气",
+          C: "阴天"
+        },
+        correct: "A",
+        explanation: "“阴”在这里作名词，意为“日影；阴影”，“树林阴翳”指树林茂密，阴影遮蔽。",
+        examples: [
+          "阳光穿林，留下斑驳之阴。（《水经注》）",
+          "夏日常在树阴下读书。（《世说新语》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "名词",
+        pronunciation: "yīn",
+        sentence: "一阴一阳之谓道。（《易·系辞上》）",
+        targetWord: "阴",
+        options: {
+          A: "月亮",
+          B: "阴暗",
+          C: "哲学概念，与阳相对"
+        },
+        correct: "C",
+        explanation: "“阴”在这里作名词，是中国古代哲学概念，指宇宙中贯通物质和人事的两大对立面之一，与“阳”相对，共同构成万物运行的规律。",
+        examples: [
+          "阴阳者，天地之道也，万物之纲纪。（《素问·阴阳应象大论》）",
+          "阴阳交合，万物化生。（《春秋繁露》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "副词",
+        pronunciation: "yīn",
+        sentence: "阴相与谋。（《汉书·李广苏建传》）",
+        targetWord: "阴",
+        options: {
+          A: "悄悄地",
+          B: "阴冷地",
+          C: "暗中地"
+        },
+        correct: "C",
+        explanation: "“阴”在这里作副词，意为“暗中，暗地里”，描述秘密谋划的行为。",
+        examples: [
+          "二人阴相结，欲谋反。（《史记·淮阴侯列传》）",
+          "阴知奸党名姓，一时收禽。（《后汉书·张衡传》）"
+        ]
+      },
+      {
+        id: 6,
+        type: "形容词",
+        pronunciation: "yīn",
+        sentence: "器性阴刻乐祸，残忍寡恩。（《旧唐书·崔器传》）",
+        targetWord: "阴",
+        options: {
+          A: "阴暗的",
+          B: "阴险的",
+          C: "隐藏的"
+        },
+        correct: "B",
+        explanation: "“阴”在这里作形容词，意为“阴险”，形容人性格阴险刻薄，喜欢幸灾乐祸。",
+        examples: [
+          "其人心术阴险，不可不防。（《资治通鉴》）",
+          "阴贼险狠，与人异趣。（宋·苏轼《教战守策》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "名词",
+        pronunciation: "yīn",
+        sentence: "日为阳，月为阴。（《素问》）",
+        targetWord: "阴",
+        options: {
+          A: "月亮",
+          B: "阴影",
+          C: "阴暗"
+        },
+        correct: "A",
+        explanation: "“阴”在这里作名词，指代“月亮”，古代认为太阳为阳，月亮为阴，相互对应。",
+        examples: [
+          "阳为日，阴为月，昼夜有常。（《论衡》）",
+          "太阴所居，月行之道。（《史记·天官书》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions_yin')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const pronunciationEl = document.getElementById('pronunciation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        pronunciationEl.textContent = currentQuestion.pronunciation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions_yin', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+            <div class="p-2 bg-blue-50 border border-blue-200 rounded">
+              <span class="font-medium">读音：</span>${item.pronunciation}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions_yin', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

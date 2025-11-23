@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 顾字篇</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习 - 顾字篇
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- 题目练习区 -->
+      <section class="lg:w-2/3">
+        <!-- "顾"字详解板块 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            "顾"字详解
+          </h2>
+          
+          <div class="space-y-6 font-classic">
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+              
+              <div class="space-y-6 pl-2">
+                <p class="font-medium text-lg">顾</p>
+                
+                <!-- 动词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">gù v（动词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 回头；回头看</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：荆轲顾笑武阳（《荆轲刺秦王》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 视；看</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：拔剑四顾心茫然（《行路难》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 看望；拜访</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：先帝不以臣卑鄙，猥自枉屈，三顾臣于草庐之中（《出师表》）</p>
+                    </div>
+
+                    <div>
+                      <p class="font-medium">④ 顾念；关心</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：三岁贯女，莫我肯顾（《诗经·硕鼠》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 回还；返回</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：使于齐，顾反，谏怀王曰（《屈原列传》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 副词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">gù adv（副词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 只是；不过</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：吾每念，常痛于骨髓，顾计不知所出耳（《荆轲刺秦王》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 但；却；反而</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：顾吾念之，强秦之所不敢加兵于赵者（《廉颇蔺相如列传》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+              <ul class="list-disc list-inside pl-2 space-y-2">
+                <li>"顾"作动词时核心义为「看」，由本义"回头看"引申出"看望、关心"等义，需结合动作对象判断</li>
+                <li>作副词时均表转折关系，"只是；不过"语气较轻，"但；却"转折意味更强，需结合语境体会语气差异</li>
+                <li>"三顾茅庐"中"顾"为"拜访"义，是文言文中的经典固定用法</li>
+                <li>"顾反"为古今异义，"反"通"返"，合指"返回"，需注意通假字与词的搭配</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 选择题区域 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            词义选择题
+          </h2>
+          
+          <!-- 题目显示区 -->
+          <div id="questionArea" class="mb-8">
+            <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+              请选择下列句子中加点词的正确释义
+            </p>
+            
+            <!-- 选项区 -->
+            <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                A. 选项一
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                B. 选项二
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                C. 选项三
+              </button>
+            </div>
+          </div>
+          
+          <!-- 反馈区 -->
+          <div id="feedbackArea" class="hidden mb-6">
+            <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+              <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+            </div>
+            
+            <div id="wrongFeedback" class="hidden">
+              <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+                有点遗憾哦，再仔细想想～
+              </p>
+              
+              <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+                <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+                <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+                <p class="mb-1"><span class="font-bold">例句拓展：</span></p>
+                <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                  <li>例句1</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+                加入错题本
+              </button>
+              <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 视频区域（更新为顾.mp4的夸克网盘链接） -->
+      <section class="lg:w-1/3">
+        <div class="bg-paper rounded-lg p-4 md:p-6 paper-edge h-full flex flex-col">
+          <h2 class="font-title text-xl md:text-2xl mb-4 text-brown-dark ink-splash inline-block">
+            名师精讲
+          </h2>
+          
+          <div class="aspect-video bg-ink/10 rounded-md overflow-hidden relative mb-4">
+            <!-- 视频播放说明 -->
+            <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center">
+              <i class="fa fa-film text-5xl text-brown/60 mb-4"></i>
+              <p class="font-classic mb-2">请点击下方链接获取"顾"字讲解视频</p>
+              <div class="mt-2 p-3 bg-white/70 rounded border border-brown/20 w-full">
+                <p class="text-sm mb-1">提取码：/~dbbe39GIhN~:/</p>
+                <a href="https://pan.quark.cn/s/724a5ffe3d89" target="_blank" class="text-cinnabar hover:underline font-medium flex items-center justify-center">
+                  <i class="fa fa-link mr-2"></i>https://pan.quark.cn/s/724a5ffe3d89
+                </a>
+                <p class="text-xs text-ink/60 mt-2">提示：点击链接或复制内容，打开「夸克APP」即可获取视频</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 顾字相关的选择题库
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        sentence: "荆轲顾笑武阳（《荆轲刺秦王》）",
+        targetWord: "顾",
+        options: {
+          A: "看望；拜访",
+          B: "回头；回头看",
+          C: "只是；不过"
+        },
+        correct: "B",
+        explanation: "“顾”在这里是动词，意为“回头；回头看”。句中描绘了荆轲在刺杀前回头对秦武阳笑的场景，体现了荆轲的镇定。",
+        examples: [
+          "相如顾召赵御史书曰（《廉颇蔺相如列传》）",
+          "顾野有麦场，场主积薪其中（《狼》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        sentence: "三顾臣于草庐之中（《出师表》）",
+        targetWord: "顾",
+        options: {
+          A: "视；看",
+          B: "顾念；关心",
+          C: "看望；拜访"
+        },
+        correct: "C",
+        explanation: "“顾”在这里是动词，意为“看望；拜访”。句中“三顾茅庐”是刘备三次拜访诸葛亮的经典典故，体现了刘备的求贤若渴。",
+        examples: [
+          "将军宜枉驾顾之（《隆中对》）",
+          "先帝不以臣卑鄙，猥自枉屈，三顾臣于草庐之中（《出师表》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "副词",
+        sentence: "顾计不知所出耳（《荆轲刺秦王》）",
+        targetWord: "顾",
+        options: {
+          A: "只是；不过",
+          B: "但；却；反而",
+          C: "回还；返回"
+        },
+        correct: "A",
+        explanation: "“顾”在这里是副词，意为“只是；不过”。句中表达了荆轲对刺杀秦王的计划无头绪的无奈，语气转折较轻。",
+        examples: [
+          "顾吾念之，强秦之所不敢加兵于赵者（《廉颇蔺相如列传》）",
+          "顾不如蜀鄙之僧哉（《为学》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "动词",
+        sentence: "三岁贯女，莫我肯顾（《诗经·硕鼠》）",
+        targetWord: "顾",
+        options: {
+          A: "视；看",
+          B: "顾念；关心",
+          C: "回头；回头看"
+        },
+        correct: "B",
+        explanation: "“顾”在这里是动词，意为“顾念；关心”。句中表达了百姓对统治者不体恤自己的不满，是《诗经》中对剥削者的控诉。",
+        examples: [
+          "子布、元表诸人各顾妻子（《赤壁之战》）",
+          "愿君顾先王之宗庙，姑反国统万人乎（《战国策》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "副词",
+        sentence: "顾吾念之，强秦之所不敢加兵于赵者（《廉颇蔺相如列传》）",
+        targetWord: "顾",
+        options: {
+          A: "只是；不过",
+          B: "但；却；反而",
+          C: "顾念；关心"
+        },
+        correct: "B",
+        explanation: "“顾”在这里是副词，意为“但；却；反而”。句中是蔺相如的内心思考，转折意味更强，引出强秦不敢攻赵的原因。",
+        examples: [
+          "足反居上，首顾居下（《汉书·贾谊传》）",
+          "顾彼未尝无过也，然亦未尝无善也（《原毁》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    // 元素获取
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    // 初始化
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+    }
+
+    // 加载随机题目
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      // 高亮目标字
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      // 渲染选项
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    // 处理选项选择
+    function handleOptionSelect(e) {
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      // 样式反馈
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        }
+        btn.classList.add('opacity-50');
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      // 正确/错误反馈
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        // 渲染拓展例句
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    // 加入错题本
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    // 更新错题数
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    // 渲染错题本
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句拓展：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      // 绑定删除错题事件
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    // 打开错题本
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭错题本
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // 点击弹窗外层关闭
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    // 页面加载完成初始化
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

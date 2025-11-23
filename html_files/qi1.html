@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 其字篇</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习 - 其字篇
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- 题目练习区 -->
+      <section class="lg:w-2/3">
+        <!-- "其"字详解板块 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            "其"字详解
+          </h2>
+          
+          <div class="space-y-8 font-classic">
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-ink border-b border-brown/30 pb-2">词类与词义（qí）</h3>
+              
+              <div class="space-y-6 pl-2">
+                <!-- 代词用法（qí） -->
+                <div>
+                  <p class="font-bold text-cinnabar">qí 代词</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">第三人称代词，相当于“他（她）的”、“它的”、“他们的”</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《生于忧患，死于安乐》：“故天将降大任于是人也，必先苦其心志，劳其筋骨。”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">第三人称代词，相当于“他（她）”、“它”、“他们”</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《子鱼论战》：“及其未既济也，请击之。”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">第一人称代词，相当于“我”、“我的”</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《游褒禅山记》：“余亦悔其随之而不得极夫游之乐也。”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">第二人称代词，相当于“你的”、“你们的”</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《资治通鉴》：“坚默然良久，曰：‘诸君各言其志。’”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">指示代词，相当于“那”、“那些”</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《捕蛇者说》：“有蒋氏者，专其利三世矣。”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">指示代词，相当于“其中”，“当中”</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《为学》：“蜀之鄙有二僧，其一贫，其一富。”</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 副词用法（qí） -->
+                <div>
+                  <p class="font-bold text-cinnabar">qí 副词</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">恐怕；大概。表示推测、估计</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《师说》：“圣人之所以为圣，愚人之所以为愚，其皆出于此乎？”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">难道，岂。表示反诘、反问</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《马说》：“其真无马邪？”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">还是。表示委婉地商量</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《烛之武退秦师》：“吾其还也。”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">可要。表示期望</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《伶官传序》：“尔其无忘乃父志！”</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 连词用法（qí） -->
+                <div>
+                  <p class="font-bold text-cinnabar">qí 连词</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">如果；假如。表示假设</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《齐桓晋文之事》：“其若是，孰能御之？”</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 助词用法（qí） -->
+                <div>
+                  <p class="font-bold text-cinnabar">qí 助词</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">无实义，起调节节奏、舒缓语气等作用</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《涉江》：“霰雪纷其无垠兮，云霏霏其承宇。”</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-ink border-b border-brown/30 pb-2">词类与词义（jī）</h3>
+              
+              <div class="space-y-6 pl-2">
+                <!-- 助词用法（jī） -->
+                <div>
+                  <p class="font-bold text-cinnabar">jī 助词</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">用于句末</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《诗经·小雅·庭燎》：“夜如何其，夜未央。”</p>
+                    </div>
+                    <div>
+                      <p class="font-medium">用于人名</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：汉代有“郦食（yǐ）其”、“审食（yǐ）其”</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+              <ul class="list-disc list-inside pl-2 space-y-2">
+                <li>“其”是文言文中的高频虚词，核心读音为qí，jī仅为特殊用法（句末助词、人名），需重点掌握qí的多词性含义</li>
+                <li>qí作代词时，第三人称代词（他/他的）是最核心义项，第一、二人称代词用法为活用，指示代词需结合语境区分“那”与“其中”</li>
+                <li>qí作副词时，表推测（大概）、反诘（难道）是高考高频考点，表商量（还是）、期望（可要）需结合句式语气判断</li>
+                <li>qí作连词仅表假设，作助词时无实义，仅起节奏调节作用，需注意与代词用法的区分（无指代对象则为助词）</li>
+                <li>jī的用法属于文言特殊读音，仅出现在《诗经》等古籍的句末语气词和汉代人名中，现代文言文考查极少</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 选择题区域 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            词义选择题
+          </h2>
+          
+          <!-- 题目显示区 -->
+          <div id="questionArea" class="mb-8">
+            <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+              请选择下列句子中加点词的正确释义
+            </p>
+            
+            <!-- 选项区 -->
+            <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                A. 选项一
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                B. 选项二
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                C. 选项三
+              </button>
+            </div>
+          </div>
+          
+          <!-- 反馈区 -->
+          <div id="feedbackArea" class="hidden mb-6">
+            <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+              <p class="text-green-700 font-medium">回答正确！看来你对这个虚实词的理解很到位～</p>
+            </div>
+            
+            <div id="wrongFeedback" class="hidden">
+              <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+                有点遗憾哦，再仔细想想～
+              </p>
+              
+              <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+                <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+                <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+                <p class="mb-1"><span class="font-bold">例句拓展：</span></p>
+                <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                  <li>例句1</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+                加入错题本
+              </button>
+              <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 视频区域（更新为其.mp4的夸克网盘链接） -->
+      <section class="lg:w-1/3">
+        <div class="bg-paper rounded-lg p-4 md:p-6 paper-edge h-full flex flex-col">
+          <h2 class="font-title text-xl md:text-2xl mb-4 text-brown-dark ink-splash inline-block">
+            名师精讲
+          </h2>
+          
+          <div class="aspect-video bg-ink/10 rounded-md overflow-hidden relative mb-4">
+            <!-- 视频播放说明 -->
+            <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center">
+              <i class="fa fa-film text-5xl text-brown/60 mb-4"></i>
+              <p class="font-classic mb-2">请点击下方链接获取"其"字讲解视频</p>
+              <div class="mt-2 p-3 bg-white/70 rounded border border-brown/20 w-full">
+                <p class="text-sm mb-1">提取码：/~8dce39GIdp~:/</p>
+                <a href="https://pan.quark.cn/s/1a8ca4503b73" target="_blank" class="text-cinnabar hover:underline font-medium flex items-center justify-center">
+                  <i class="fa fa-link mr-2"></i>https://pan.quark.cn/s/1a8ca4503b73
+                </a>
+                <p class="text-xs text-ink/60 mt-2">提示：点击链接或复制内容，打开「夸克APP」即可获取视频</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 其字相关的选择题库（覆盖qí/jī核心义项）
+    const questions = [
+      {
+        id: 1,
+        pronunciation: "qí",
+        type: "代词",
+        sentence: "必先苦其心志，劳其筋骨（《生于忧患，死于安乐》）",
+        targetWord: "其",
+        options: {
+          A: "他的",
+          B: "其中",
+          C: "大概"
+        },
+        correct: "A",
+        explanation: "“其”在这里读qí，是第三人称代词，表“他的”。句中表示必定先要使他的内心痛苦，使他的筋骨劳累，是“其”最核心的代词义项。",
+        examples: [
+          "择其善者而从之（《论语》）",
+          "屠大窘，恐前后受其敌（《狼》）"
+        ]
+      },
+      {
+        id: 2,
+        pronunciation: "qí",
+        type: "代词",
+        sentence: "及其未既济也，请击之（《子鱼论战》）",
+        targetWord: "其",
+        options: {
+          A: "那些",
+          B: "他们",
+          C: "你的"
+        },
+        correct: "B",
+        explanation: "“其”在这里读qí，是第三人称代词，表“他们”。句中表示趁着他们还没有全部渡过河，请攻击他们，代指敌方军队，是第三人称代词的宾格用法。",
+        examples: [
+          "见其发矢十中八九（《卖油翁》）",
+          "令其守南门（《陈涉世家》）"
+        ]
+      },
+      {
+        id: 3,
+        pronunciation: "qí",
+        type: "代词",
+        sentence: "余亦悔其随之而不得极夫游之乐也（《游褒禅山记》）",
+        targetWord: "其",
+        options: {
+          A: "我",
+          B: "他",
+          C: "那"
+        },
+        correct: "A",
+        explanation: "“其”在这里读qí，是第一人称代词，表“我”。句中表示我也后悔自己跟着他出来，因而不能尽情享受那游览的乐趣，是“其”的第一人称活用用法。",
+        examples: [
+          "而余亦悔其随之（《游褒禅山记》）",
+          "宁信度，无自信也，不亦惑乎？其此之谓乎（《郑人买履》）"
+        ]
+      },
+      {
+        id: 4,
+        pronunciation: "qí",
+        type: "代词",
+        sentence: "蜀之鄙有二僧，其一贫，其一富（《为学》）",
+        targetWord: "其",
+        options: {
+          A: "其中",
+          B: "他的",
+          C: "难道"
+        },
+        correct: "A",
+        explanation: "“其”在这里读qí，是指示代词，表“其中”。句中表示四川的边境有两个和尚，其中一个贫穷，一个富有，是指示代词的具体指代用法。",
+        examples: [
+          "其一犬坐于前（《狼》）",
+          "不能指其一端（《口技》）"
+        ]
+      },
+      {
+        id: 5,
+        pronunciation: "qí",
+        type: "副词",
+        sentence: "其皆出于此乎（《师说》）",
+        targetWord: "其",
+        options: {
+          A: "还是",
+          B: "大概",
+          C: "如果"
+        },
+        correct: "B",
+        explanation: "“其”在这里读qí，是副词，表推测“大概”。句中表示圣人成为圣人、愚人成为愚人的原因，大概都出自这里吧，是文言中表推测的典型用法。",
+        examples: [
+          "其恕乎（《论语》）",
+          "其必曰“先天下之忧而忧”乎（《岳阳楼记》）"
+        ]
+      },
+      {
+        id: 6,
+        pronunciation: "qí",
+        type: "副词",
+        sentence: "其真无马邪（《马说》）",
+        targetWord: "其",
+        options: {
+          A: "难道",
+          B: "可要",
+          C: "大概"
+        },
+        correct: "A",
+        explanation: "“其”在这里读qí，是副词，表反诘“难道”。句中表示难道真的没有千里马吗？用反问语气加强情感，是“其”表反诘的高频考点。",
+        examples: [
+          "其孰能讥之乎（《游褒禅山记》）",
+          "其真不知马也（《马说》）"
+        ]
+      },
+      {
+        id: 7,
+        pronunciation: "qí",
+        type: "副词",
+        sentence: "吾其还也（《烛之武退秦师》）",
+        targetWord: "其",
+        options: {
+          A: "如果",
+          B: "还是",
+          C: "他的"
+        },
+        correct: "B",
+        explanation: "“其”在这里读qí，是副词，表委婉商量“还是”。句中表示我们还是回去吧，是外交语境中委婉建议的语气用法。",
+        examples: [
+          "君其问诸水滨（《左传》）",
+          "其敢不尽力乎（《左传》）"
+        ]
+      },
+      {
+        id: 8,
+        pronunciation: "qí",
+        type: "副词",
+        sentence: "尔其无忘乃父志（《伶官传序》）",
+        targetWord: "其",
+        options: {
+          A: "可要",
+          B: "难道",
+          C: "其中"
+        },
+        correct: "A",
+        explanation: "“其”在这里读qí，是副词，表期望“可要”。句中表示你可不要忘记你父亲的志向，是长辈对晚辈的叮嘱语气，属于表期望的特殊用法。",
+        examples: [
+          "勉旃，汝其戒之（《汉书》）",
+          "其用心也，固已远矣（《进学解》）"
+        ]
+      },
+      {
+        id: 9,
+        pronunciation: "qí",
+        type: "连词",
+        sentence: "其若是，孰能御之（《齐桓晋文之事》）",
+        targetWord: "其",
+        options: {
+          A: "如果",
+          B: "大概",
+          C: "那"
+        },
+        correct: "A",
+        explanation: "“其”在这里读qí，是连词，表假设“如果”。句中表示如果像这样，谁能抵挡他呢？是文言中表假设的连词用法，需结合条件语境判断。",
+        examples: [
+          "其或未能处置，即且给公验（《唐会要》）",
+          "其有违者，必加罪黜（《旧唐书》）"
+        ]
+      },
+      {
+        id: 10,
+        pronunciation: "jī",
+        type: "助词",
+        sentence: "夜如何其，夜未央（《诗经·小雅·庭燎》）",
+        targetWord: "其",
+        options: {
+          A: "他的",
+          B: "句末助词（无实义）",
+          C: "大概"
+        },
+        correct: "B",
+        explanation: "“其”在这里读jī，是句末助词，无实义。句中表示夜晚怎么样了？夜晚还没有结束，仅起凑足音节、调节语气的作用，是jī读音的特殊用法。",
+        examples: [
+          "彼其之子，不与我戍申（《诗经·王风》）",
+          "汉代人名：郦食（yǐ）其、审食（yǐ）其"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    // 元素获取
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    // 初始化
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+    }
+
+    // 加载随机题目
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      // 高亮目标字
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      // 渲染选项
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    // 处理选项选择
+    function handleOptionSelect(e) {
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      // 样式反馈
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        }
+        btn.classList.add('opacity-50');
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      // 正确/错误反馈
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        // 渲染拓展例句
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    // 加入错题本
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    // 更新错题数
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    // 渲染错题本
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句拓展：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      // 绑定删除错题事件
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    // 打开错题本
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭错题本
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // 点击弹窗外层关闭
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    // 页面加载完成初始化
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

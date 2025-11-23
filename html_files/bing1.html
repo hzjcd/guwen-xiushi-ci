@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 兵字篇</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习 - 兵字篇
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- 题目练习区 -->
+      <section class="lg:w-2/3">
+        <!-- "兵"字详解板块 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            "兵"字详解
+          </h2>
+          
+          <div class="space-y-6 font-classic">
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+              
+              <div class="space-y-6 pl-2">
+                <p class="font-medium text-lg">兵</p>
+                
+                <!-- 名词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">bīng n（名词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 兵器、武器</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：斩木为兵，揭竿为旗（《过秦论》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 军队、士兵</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：赵亦盛设兵待秦，秦不敢动（《廉颇蔺相如列传》）</p>
+                      <p class="text-sm text-ink/70 italic">例：不战而屈人之兵（《谋攻》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 战争、军事</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：兵旱相乘，天下大屈（《论积贮疏》）</p>
+                      <p class="text-sm text-ink/70 italic">例：昔者先王知兵之不可去也（《教战守策》）</p>
+                    </div>
+
+                    <div>
+                      <p class="font-medium">④ 战略、战术</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：上兵伐谋（《谋攻》）</p>
+                      <p class="text-sm text-ink/70 italic">例：故兵无常势（《孙子·虚实》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 动词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">bīng v（动词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 用兵器攻击或杀戮</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：左右欲兵之（《史记·伯夷列传》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+              <ul class="list-disc list-inside pl-2 space-y-2">
+                <li>"兵"作名词时义项丰富，需结合语境区分「具体兵器」与「抽象军事/战略」</li>
+                <li>表「军队、士兵」时，多作句子主语或宾语，侧重实体人员/武装力量</li>
+                <li>表「战争、军事」时，多与自然灾异、国家治理搭配（如"兵旱相乘"）</li>
+                <li>作动词时为使动用法，仅见于古汉语特定语境，需结合动作对象判断</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 选择题区域 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            词义选择题
+          </h2>
+          
+          <!-- 题目显示区 -->
+          <div id="questionArea" class="mb-8">
+            <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+              请选择下列句子中加点词的正确释义
+            </p>
+            
+            <!-- 选项区 -->
+            <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                A. 选项一
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                B. 选项二
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                C. 选项三
+              </button>
+            </div>
+          </div>
+          
+          <!-- 反馈区 -->
+          <div id="feedbackArea" class="hidden mb-6">
+            <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+              <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+            </div>
+            
+            <div id="wrongFeedback" class="hidden">
+              <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+                有点遗憾哦，再仔细想想～
+              </p>
+              
+              <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+                <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+                <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+                <p class="mb-1"><span class="font-bold">例句拓展：</span></p>
+                <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                  <li>例句1</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+                加入错题本
+              </button>
+              <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 视频区域（更新为兵.mp4的夸克网盘链接） -->
+      <section class="lg:w-1/3">
+        <div class="bg-paper rounded-lg p-4 md:p-6 paper-edge h-full flex flex-col">
+          <h2 class="font-title text-xl md:text-2xl mb-4 text-brown-dark ink-splash inline-block">
+            名师精讲
+          </h2>
+          
+          <div class="aspect-video bg-ink/10 rounded-md overflow-hidden relative mb-4">
+            <!-- 视频播放说明 -->
+            <div class="w-full h-full flex flex-col items-center justify-center p-4 text-center">
+              <i class="fa fa-film text-5xl text-brown/60 mb-4"></i>
+              <p class="font-classic mb-2">请点击下方链接获取"兵"字讲解视频</p>
+              <div class="mt-2 p-3 bg-white/70 rounded border border-brown/20 w-full">
+                <p class="text-sm mb-1">提取码：/~9b6d39GIPj~:/</p>
+                <a href="https://pan.quark.cn/s/d9211b34fdad" target="_blank" class="text-cinnabar hover:underline font-medium flex items-center justify-center">
+                  <i class="fa fa-link mr-2"></i>https://pan.quark.cn/s/d9211b34fdad
+                </a>
+                <p class="text-xs text-ink/60 mt-2">提示：点击链接或复制内容，打开「夸克APP」即可获取视频</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 兵字相关的选择题库
+    const questions = [
+      {
+        id: 1,
+        type: "名词",
+        sentence: "斩木为兵，揭竿为旗（《过秦论》）",
+        targetWord: "兵",
+        options: {
+          A: "军队、士兵",
+          B: "兵器、武器",
+          C: "战争、军事"
+        },
+        correct: "B",
+        explanation: "“兵”在这里是名词，意为“兵器、武器”。句中“斩木为兵”指砍削树木作为兵器，描绘了秦末农民起义的简陋装备。",
+        examples: [
+          "收天下之兵，聚之咸阳（《过秦论》）",
+          "兵甲已足，当奖率三军（《出师表》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "名词",
+        sentence: "赵亦盛设兵待秦，秦不敢动（《廉颇蔺相如列传》）",
+        targetWord: "兵",
+        options: {
+          A: "战略、战术",
+          B: "兵器、武器",
+          C: "军队、士兵"
+        },
+        correct: "C",
+        explanation: "“兵”在这里是名词，意为“军队、士兵”。句中“盛设兵”指赵国部署了大量军队，体现了赵国的军事防备。",
+        examples: [
+          "乃令符离人葛婴将兵徇蕲以东（《陈涉世家》）",
+          "必以长安君为质，兵乃出（《触龙说赵太后》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "名词",
+        sentence: "兵旱相乘，天下大屈（《论积贮疏》）",
+        targetWord: "兵",
+        options: {
+          A: "战争、军事",
+          B: "军队、士兵",
+          C: "战略、战术"
+        },
+        correct: "A",
+        explanation: "“兵”在这里是名词，意为“战争、军事”。句中“兵旱相乘”指战争与旱灾接连发生，强调了社会危机的双重性。",
+        examples: [
+          "兵者，国之大事（《孙子·计篇》）",
+          "废池乔木，犹厌言兵（《扬州慢》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "名词",
+        sentence: "上兵伐谋（《谋攻》）",
+        targetWord: "兵",
+        options: {
+          A: "兵器、武器",
+          B: "战略、战术",
+          C: "战争、军事"
+        },
+        correct: "B",
+        explanation: "“兵”在这里是名词，意为“战略、战术”。句中“上兵伐谋”指最高明的战术是用谋略战胜敌人，是《孙子兵法》的核心思想之一。",
+        examples: [
+          "故兵无常势，水无常形（《孙子·虚实》）",
+          "兵不厌诈，此之谓也（《韩非子·难一》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        sentence: "左右欲兵之（《史记·伯夷列传》）",
+        targetWord: "兵",
+        options: {
+          A: "用兵器攻击或杀戮",
+          B: "发动战争",
+          C: "统率军队"
+        },
+        correct: "A",
+        explanation: "“兵”在这里是动词，意为“用兵器攻击或杀戮”。句中“左右欲兵之”指身边的人想要用兵器杀掉他，是“兵”的动词用法的典型示例。",
+        examples: [
+          "武士拔剑欲兵之，王止之（《战国策·齐策》）",
+          "有贼犯边，兵之则胜，纵之则患（《资治通鉴》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    // 元素获取
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    // 初始化
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+    }
+
+    // 加载随机题目
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      // 高亮目标字
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      // 渲染选项
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    // 处理选项选择
+    function handleOptionSelect(e) {
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      // 样式反馈
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        }
+        btn.classList.add('opacity-50');
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      // 正确/错误反馈
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        // 渲染拓展例句
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    // 加入错题本
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    // 更新错题数
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    // 渲染错题本
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句拓展：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      // 绑定删除错题事件
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    // 打开错题本
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // 关闭错题本
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // 点击弹窗外层关闭
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    // 页面加载完成初始化
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "贼"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "贼"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+            
+            <div class="space-y-6 pl-2">
+              <p class="font-medium text-lg">贼（zéi）</p>
+              
+              <!-- 动词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（动词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 残害；伤害</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：害良为贼。（《荀子·修身》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 特指杀害</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：贼民之主，不忠。（《左传·宣公二年》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 名词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（名词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 先秦两汉时期，指作乱叛国危害人民的人</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：讨贼复兴之效。（诸葛亮《出师表》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 刺客，杀人的人</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：燕王昏乱，其太子丹乃阴令荆轲为贼。（《史记·秦始皇本纪》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 偷窃或抢劫的人（先秦两汉用"盗"，多指偷窃者；用"贼"，多指抢劫财物者，后来才指偷窃者）</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：使长安丞龚奢叩堂户晓贼。（《汉书·赵尹韩张两王传》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 骂人的字眼</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：老贼欲废汉自立。（《资治通鉴》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑤ 祸害</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：淫侈之欲日日以长，是天下之大贼也。（贾谊《论积贮疏》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑥ 敌人</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：谄谀我者，吾贼也。（《荀子·修身》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 形容词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（形容词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 邪恶的，不正派的</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：寒暑不和，贼气相奸。（《史记·龟策列传》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 残暴的</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：[郭解]少时阴贼。（《史记·游侠列传》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"贼"的用法丰富，可作动词、名词和形容词，需结合语境判断</li>
+              <li>先秦两汉时期，"贼"与"盗"有别："盗"多指偷窃者，"贼"多指抢劫者或作乱叛国者</li>
+              <li>作名词时，含义多样，可指乱臣、刺客、盗匪、敌人等，需根据上下文具体分析</li>
+              <li>作形容词时，多表示"邪恶"或"残暴"的性质</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"贼"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        sentence: "害良为贼。（《荀子·修身》）",
+        targetWord: "贼",
+        options: {
+          A: "偷窃；盗窃",
+          B: "残害；伤害",
+          C: "作乱；反叛"
+        },
+        correct: "B",
+        explanation: "“贼”在这里是动词，意为“残害；伤害”，指伤害善良的人。",
+        examples: [
+          "贼民之主，不忠。（《左传·宣公二年》）",
+          "二人相憎，而欲相贼也。（《韩非子》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "名词",
+        sentence: "讨贼复兴之效。（诸葛亮《出师表》）",
+        targetWord: "贼",
+        options: {
+          A: "作乱叛国危害人民的人",
+          B: "偷窃或抢劫的人",
+          C: "刺客，杀人的人"
+        },
+        correct: "A",
+        explanation: "“贼”在这里是名词，指作乱叛国、危害人民的人，文中特指曹魏政权。",
+        examples: [
+          "其带剑者，聚徒属，立节操，以显其名，而犯五官之禁，此乃匹夫之私誉，而士之窃名者也，故圣王之所禁也。（《韩非子·五蠹》）",
+          "当是时，秦嘉已立景驹为楚王，军彭城东，欲距项梁。项梁谓军吏曰：“陈王先首事，战不利，未闻所在。今秦嘉倍陈王而立景驹，逆无道。”乃进兵击秦嘉。秦嘉军败走，追之至胡陵。嘉还战一日，嘉死，军降。景驹走死梁地。项梁已并秦嘉军，军胡陵，将引军而西。章邯军至栗，项梁使别将朱鸡石、馀樊君与战。馀樊君死。朱鸡石军败，亡走胡陵。项梁乃引兵入薛，诛鸡石。项梁前使项羽别攻襄城，襄城坚守不下。已拔，皆坑之。还报项梁。项梁闻陈王定死，召诸别将会薛计事。此时沛公亦起沛，往焉。（《史记·项羽本纪》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "名词",
+        sentence: "燕王昏乱，其太子丹乃阴令荆轲为贼。（《史记·秦始皇本纪》）",
+        targetWord: "贼",
+        options: {
+          A: "祸害；灾害",
+          B: "敌人；仇敌",
+          C: "刺客，杀人的人"
+        },
+        correct: "C",
+        explanation: "“贼”在这里是名词，意为“刺客，杀人的人”，指太子丹派遣荆轲作为刺客行刺秦始皇。",
+        examples: [
+          "聂政者，轵深井里人也。杀人避仇，与母、姊如齐，以屠为事。久之，濮阳严仲子事韩哀侯，与韩相侠累有卻。严仲子恐诛，亡去，游求人可以报侠累者。至齐，齐人或言聂政勇敢士也，避仇隐于屠者之间。（《史记·刺客列传》）",
+          "曹沫为鲁将，与齐战，三败北。鲁庄公惧，乃献遂邑之地以和。犹复以为将。齐桓公许与鲁会于柯而盟。桓公与庄公既盟于坛上，曹沫执匕首劫齐桓公，桓公左右莫敢动，而问曰：“子将何欲？”曹沫曰：“齐强鲁弱，而大国侵鲁亦甚矣。今鲁城坏即压齐境，君其图之。”桓公乃许尽归鲁之侵地。既已言，曹沫投其匕首，下坛，北面就群臣之位，颜色不变，辞令如故。桓公怒，欲倍其约。管仲曰：“不可。夫贪小利以自快，弃信于诸侯，失天下之援，不如与之。”于是桓公乃遂割鲁侵地，曹沫三战所亡地尽复予鲁。（《史记·刺客列传》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "名词",
+        sentence: "淫侈之欲日日以长，是天下之大贼也。（贾谊《论积贮疏》）",
+        targetWord: "贼",
+        options: {
+          A: "盗匪；窃贼",
+          B: "祸害；危害",
+          C: "敌人；仇敌"
+        },
+        correct: "B",
+        explanation: "“贼”在这里是名词，意为“祸害；危害”，指奢侈浪费的欲望是天下的大祸害。",
+        examples: [
+          "吏明知民有饥寒而不恤，故民亡（无）所告诉，愁怨上心，此乃政之贼也。（《汉书·谷永传》）",
+          "天灾流行，国家代有，救灾恤邻，道也。行道有福。（《左传·僖公十三年》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "形容词",
+        sentence: "[郭解]少时阴贼。（《史记·游侠列传》）",
+        targetWord: "贼",
+        options: {
+          A: "邪恶的，不正派的",
+          B: "残暴的，狠毒的",
+          C: "阴险的，狡诈的"
+        },
+        correct: "B",
+        explanation: "“贼”在这里是形容词，意为“残暴的，狠毒的”，描述郭解年轻时性格残暴狠毒。",
+        examples: [
+          "秦，虎狼之国也，有吞天下之心。秦，天下之仇雠也。（《史记·苏秦列传》）",
+          "寒暑不和，贼气相奸。（《史记·龟策列传》）"
+        ]
+      },
+      {
+        id: 6,
+        type: "名词",
+        sentence: "谄谀我者，吾贼也。（《荀子·修身》）",
+        targetWord: "贼",
+        options: {
+          A: "敌人；仇敌",
+          B: "祸害；灾害",
+          C: "小人；奸佞"
+        },
+        correct: "A",
+        explanation: "“贼”在这里是名词，意为“敌人；仇敌”，指那些阿谀奉承自己的人，实际上是自己的敌人。",
+        examples: [
+          "夫将者，国之辅也。辅周则国必强，辅隙则国必弱。故君之所以患于军者三：不知军之不可以进而谓之进，不知军之不可以退而谓之退，是谓縻军；不知三军之事而同三军之政，则军士惑矣；不知三军之权而同三军之任，则军士疑矣。三军既惑且疑，则诸侯之难至矣。是谓乱军引胜。（《孙子兵法·谋攻篇》）",
+          "亲贤臣，远小人，此先汉所以兴隆也；亲小人，远贤臣，此后汉所以倾颓也。（诸葛亮《出师表》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "动词",
+        sentence: "贼民之主，不忠。（《左传·宣公二年》）",
+        targetWord: "贼",
+        options: {
+          A: "杀害",
+          B: "伤害",
+          C: "背叛"
+        },
+        correct: "A",
+        explanation: "“贼”在这里是动词，特指“杀害”，指杀害百姓的君主是不忠的行为。",
+        examples: [
+          "小人有母，皆尝小人之食矣，未尝君之羹，请以遗之。（《左传·隐公元年》）",
+          "公曰：“不义不暱，厚将崩。”（《左传·隐公元年》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

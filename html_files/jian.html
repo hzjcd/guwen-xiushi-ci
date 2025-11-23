@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - "间"字篇</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "间"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "间"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+            
+            <div class="space-y-6 pl-2">
+              <!-- 读音jiān的用法 -->
+              <div>
+                <p class="font-medium text-lg">间（jiān）</p>
+                
+                <!-- 名词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（名词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 中间；当中。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《子路曾皙冉有公西华侍坐》："千乘之国，摄乎大国之间。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 期间；年间。指时间。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《兰亭集序》："向之所欣，俯仰之间，已为陈迹。"</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 副词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（副词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 近来，不久之前。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《左传·成公十六年》："以君之灵，间蒙甲胄，不敢拜命。"</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 量词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（量词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 用于房屋。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《归田园居》："方宅十余亩，草屋八九间。"</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 读音jiàn的用法 -->
+              <div>
+                <p class="font-medium text-lg">间（jiàn）</p>
+                
+                <!-- 名词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（名词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 间隙；空隙。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《庖丁解牛》："彼节者有间，而刀刃者无厚。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 嫌隙；隔阂。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《左传·昭公十三年》："诸侯有间矣。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 机会；空子。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《<指南录>后序》："至京口，得间奔真州。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 距离；差别。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《淮南子·俶真》："则美丑有间矣。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 间谍。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《史记·河渠书》："始臣为间，然渠成亦秦之利也。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑥ 一会儿；片刻。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《促织》："少间，帘内掷一纸出。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑦ 间道；偏僻的小路。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《廉颇蔺相如列传》："故令人持璧归，间至赵矣。"</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 动词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（动词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 间隔；隔离。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《桃花源记》："遂与外人间隔。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 经历；持续。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《狱中杂记》："一人予二十金，骨微伤，病间月。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 离间。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《屈原列传》："谗人间之，可谓穷矣。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 伺候；侦察。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《韩非子·外储说右上》："内间主之情以告外。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 参与；介入。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《曹刿论战》："肉食者谋之，又何间焉。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑥ 交杂；夹杂。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《口技》："中间力拉崩倒之声。"</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 副词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（副词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 间断的；间或。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《邹忌讽齐王纳谏》："数月之后，时时而间进。"</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 私下；暗地里。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《信陵君窃符救赵》："侯生乃屏人间语。"</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 读音xián的用法 -->
+              <div>
+                <p class="font-medium text-lg">间（xián）</p>
+                
+                <!-- 形容词用法 -->
+                <div class="mt-3">
+                  <p class="font-bold text-cinnabar">（形容词）</p>
+                  <div class="pl-4 space-y-3 mt-2">
+                    <div>
+                      <p class="font-medium">① 通"闲"。空闲；安静。</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：《楚辞·招魂》："像设君室，静间安些。"</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"间"是典型的多音多义词，需重点区分jiān、jiàn、xián三种读音的不同用法</li>
+              <li>读jiān时多表示空间、时间概念，或作量词使用</li>
+              <li>读jiàn时用法最丰富，可表示间隙、隔阂等名词义，也可表示离间、参与等动作义</li>
+              <li>读xián时为通假字，通"闲"，表示空闲、安静</li>
+              <li>作"交杂、夹杂"讲时读作jiàn，如"中间力拉崩倒之声"</li>
+              <li>表示"私下、暗地里"时读作jiàn，如"侯生乃屏人间语"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"间"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "名词(jiān)",
+        sentence: "千乘之国，摄乎大国之间。（《子路曾皙冉有公西华侍坐》）",
+        targetWord: "间",
+        options: {
+          A: "期间；年间",
+          B: "中间；当中",
+          C: "间隙；空隙"
+        },
+        correct: "B",
+        explanation: "“间”在这里读jiān，作名词，意为“中间；当中”。句意为“拥有一千辆兵车的国家，夹在大国中间”。",
+        examples: [
+          "奉命于危难之间。（《出师表》）",
+          "山间之四时也。（《醉翁亭记》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "名词(jiān)",
+        sentence: "向之所欣，俯仰之间，已为陈迹。（《兰亭集序》）",
+        targetWord: "间",
+        options: {
+          A: "期间；年间",
+          B: "机会；空子",
+          C: "一会儿；片刻"
+        },
+        correct: "A",
+        explanation: "“间”在这里读jiān，作名词，意为“期间；年间”，指时间。句意为“过去所喜欢的东西，转瞬间，已经成为旧迹”。",
+        examples: [
+          "数月之间，浸大也。（《狱中杂记》）",
+          "扁鹊见蔡桓公，立有间。（《扁鹊见蔡桓公》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "量词(jiān)",
+        sentence: "方宅十余亩，草屋八九间。（《归田园居》）",
+        targetWord: "间",
+        options: {
+          A: "用于房屋",
+          B: "用于时间",
+          C: "用于空间"
+        },
+        correct: "A",
+        explanation: "“间”在这里读jiān，作量词，用于房屋。句意为“住宅四周有十多亩地，还有八九间草屋”。",
+        examples: [
+          "安得广厦千万间，大庇天下寒士俱欢颜。（《茅屋为秋风所破歌》）",
+          "一间茅屋何所值，父母之乡去不得。（《别州民》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "名词(jiàn)",
+        sentence: "彼节者有间，而刀刃者无厚。（《庖丁解牛》）",
+        targetWord: "间",
+        options: {
+          A: "嫌隙；隔阂",
+          B: "间谍",
+          C: "间隙；空隙"
+        },
+        correct: "C",
+        explanation: "“间”在这里读jiàn，作名词，意为“间隙；空隙”。句意为“那牛的骨节有间隙，而刀刃很薄”。",
+        examples: [
+          "至京口，得间奔真州。（《<指南录>后序》）",
+          "以无厚入有间，恢恢乎其于游刃必有余地矣。（《庖丁解牛》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词(jiàn)",
+        sentence: "肉食者谋之，又何间焉。（《曹刿论战》）",
+        targetWord: "间",
+        options: {
+          A: "离间",
+          B: "参与；介入",
+          C: "间隔；隔离"
+        },
+        correct: "B",
+        explanation: "“间”在这里读jiàn，作动词，意为“参与；介入”。句意为“当权的人自会谋划这件事，你又何必参与呢”。",
+        examples: [
+          "又间令吴广之次所旁丛祠中。（《陈涉世家》）",
+          "中间力拉崩倒之声。（《口技》）"
+        ]
+      },
+      {
+        id: 6,
+        type: "动词(jiàn)",
+        sentence: "谗人间之，可谓穷矣。（《屈原列传》）",
+        targetWord: "间",
+        options: {
+          A: "离间",
+          B: "伺候；侦察",
+          C: "经历；持续"
+        },
+        correct: "A",
+        explanation: "“间”在这里读jiàn，作动词，意为“离间”。句意为“谗佞小人离间他（屈原）和君主的关系，可以说处境困窘到极点了”。",
+        examples: [
+          "乃用陈平计间项王。（《史记·项羽本纪》）",
+          "范增数目项王，举所佩玉玦以示之者三，项王默然不应。范增起，出，召项庄，谓曰：“君王为人不忍。若入前为寿，寿毕，请以剑舞，因击沛公于坐，杀之。不者，若属皆且为所虏。”（《鸿门宴》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "副词(jiàn)",
+        sentence: "数月之后，时时而间进。（《邹忌讽齐王纳谏》）",
+        targetWord: "间",
+        options: {
+          A: "私下；暗地里",
+          B: "近来，不久之前",
+          C: "间断的；间或"
+        },
+        correct: "C",
+        explanation: "“间”在这里读jiàn，作副词，意为“间断的；间或”。句意为“几个月以后，还不时地有人偶尔进谏”。",
+        examples: [
+          "间以诗记所遭。（《<指南录>后序》）",
+          "间有宦游吾乡。（《黄生借书说》）"
+        ]
+      },
+      {
+        id: 8,
+        type: "副词(jiàn)",
+        sentence: "侯生乃屏人间语。（《信陵君窃符救赵》）",
+        targetWord: "间",
+        options: {
+          A: "间断的；间或",
+          B: "私下；暗地里",
+          C: "近来，不久之前"
+        },
+        correct: "B",
+        explanation: "“间”在这里读jiàn，作副词，意为“私下；暗地里”。句意为“侯生于是屏退众人，私下里对信陵君说”。",
+        examples: [
+          "又间令吴广之次所旁丛祠中。（《陈涉世家》）",
+          "间至赵矣。（《廉颇蔺相如列传》）"
+        ]
+      },
+      {
+        id: 9,
+        type: "形容词(xián)",
+        sentence: "像设君室，静间安些。（《楚辞·招魂》）",
+        targetWord: "间",
+        options: {
+          A: "通“贤”，贤能的",
+          B: "通“闲”，空闲；安静",
+          C: "通“显”，明显的"
+        },
+        correct: "B",
+        explanation: "“间”在这里读xián，通“闲”，作形容词，意为“空闲；安静”。句意为“神灵的画像设在你的屋内，安静闲适又安宁”。",
+        examples: [
+          "闲暇之余，读书为乐。（现代汉语沿用义）",
+          "人闲桂花落，夜静春山空。（《鸟鸣涧》）"
+        ]
+      },
+      {
+        id: 10,
+        type: "动词(jiàn)",
+        sentence: "中间力拉崩倒之声。（《口技》）",
+        targetWord: "间",
+        options: {
+          A: "交杂；夹杂",
+          B: "参与；介入",
+          C: "离间"
+        },
+        correct: "A",
+        explanation: "“间”在这里读jiàn，作动词，意为“交杂；夹杂”。句意为“其中夹杂着噼里啪啦房屋倒塌的声音”。",
+        examples: [
+          "夜久语声绝，如闻泣幽咽。天明登前途，独与老翁别。（《石壕吏》）",
+          "凡天地之间，有鬼，非人死精神为之也，皆人思念存想之所致也。（《订鬼》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

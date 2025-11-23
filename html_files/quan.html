@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 劝</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "劝"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "劝"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+            
+            <div class="space-y-6 pl-2">
+              <p class="font-medium text-lg">劝（quàn）</p>
+              
+              <!-- 动词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（动词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 鼓励；勉励</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：于是太公劝其女功，极技巧。（《货殖列传序》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 劝说</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：劝君更尽一杯酒，西出阳关无故人。（《送元二使安西》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"劝"在文言文中均作动词用，核心含义与"言语激励"相关</li>
+              <li>表示"鼓励；勉励"时，侧重通过言语推动他人积极行动，多用于官方、长辈对晚辈或群体的引导</li>
+              <li>表示"劝说"时，侧重通过言语说服他人改变想法或行为，多用于人际间的沟通场景</li>
+              <li>判断时可关注对象："鼓励"多指向积极行为的推动，"劝说"多指向具体行为的改变</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"劝"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        sentence: "于是太公劝其女功，极技巧。（《货殖列传序》）",
+        targetWord: "劝",
+        options: {
+          A: "鼓励；勉励",
+          B: "劝说",
+          C: "奖励；表彰"
+        },
+        correct: "A",
+        explanation: "“劝”在这里是动词，意为“鼓励；勉励”。句中描述姜太公鼓励妇女从事蚕桑纺织，极力发展工艺技巧，体现了对农业和手工业的重视。",
+        examples: [
+          "劝学育才，为国之本。（《礼记》）",
+          "文王以民力为台为沼，而民欢乐之，谓其台曰灵台，谓其沼曰灵沼，乐其有麋鹿鱼鳖。古之人与民偕乐，故能乐也。（《孟子》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        sentence: "劝君更尽一杯酒，西出阳关无故人。（《送元二使安西》）",
+        targetWord: "劝",
+        options: {
+          A: "鼓励；勉励",
+          B: "劝说",
+          C: "强迫；迫使"
+        },
+        correct: "B",
+        explanation: "“劝”在这里是动词，意为“劝说”。诗句中诗人劝说友人再饮一杯酒，因为西行出阳关后就难遇故旧了，体现了深厚的离别之情。",
+        examples: [
+          "再三劝客杯中酒。（《渔家傲》）",
+          "主人有酒且莫斟，听我一曲悲来吟。（《悲来吟》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "动词",
+        sentence: "举世皆浊我独清，众人皆醉我独醒，是以见放。渔父莞尔而笑，鼓枻而去，乃歌曰：“沧浪之水清兮，可以濯吾缨；沧浪之水浊兮，可以濯吾足。”遂去，不复与言。（《渔父》）",
+        targetWord: "（隐含劝意）",
+        options: {
+          A: "鼓励坚持自我",
+          B: "劝说随遇而安",
+          C: "讽刺清高自傲"
+        },
+        correct: "B",
+        explanation: "渔父的歌谣隐含“劝说”之意，劝屈原不必过于清高，应随世道变化而自处，体现了与世推移的处世哲学。这里的劝说通过比喻表达，更为含蓄委婉。",
+        examples: [
+          "当局者迷，旁观者清。（《新唐书》）",
+          "水至清则无鱼，人至察则无徒。（《大戴礼记》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "动词",
+        sentence: "故赏莫如厚而信，使民利之；罚莫如重而必，使民畏之；法莫如一而固，使民知之。故主施赏不迁，行诛无赦，誉辅其赏，毁随其罚，则贤不肖俱尽其力矣。（《韩非子》）",
+        targetWord: "（赏罚的劝惩）",
+        options: {
+          A: "鼓励行善",
+          B: "劝说改过",
+          C: "强制服从"
+        },
+        correct: "A",
+        explanation: "文中通过厚赏立信的主张，体现“劝”的“鼓励”之意，即通过奖赏机制鼓励民众积极获利，从而引导其尽力而为，这是法家思想中“劝善”的典型体现。",
+        examples: [
+          "赏罚分明，则善恶有别。（《贞观政要》）",
+          "劝善惩恶，国之大纲。（《晋书》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        sentence: "子路问曰：“闻斯行诸？”子曰：“有父兄在，如之何其闻斯行之？”冉有问曰：“闻斯行诸？”子曰：“闻斯行之。”公西华曰：“由也问闻斯行诸，子曰，‘有父兄在’；求也问闻斯行诸，子曰，‘闻斯行之’。赤也惑，敢问。”子曰：“求也退，故进之；由也兼人，故退之。”（《论语》）",
+        targetWord: "（孔子的劝诫）",
+        options: {
+          A: "鼓励冉有行动",
+          B: "劝说子路激进",
+          C: "阻止公西华提问"
+        },
+        correct: "A",
+        explanation: "孔子对冉有“闻斯行之”的回答，包含“鼓励”之意，因冉有性格退缩，故鼓励他勇于行动。这种因材施教的引导，体现了“劝”的激励作用。",
+        examples: [
+          "知者不惑，仁者不忧，勇者不惧。（《论语》）",
+          "三人行，必有我师焉。择其善者而从之，其不善者而改之。（《论语》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 劝</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "劝"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "劝"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+            
+            <div class="space-y-6 pl-2">
+              <p class="font-medium text-lg">劝（quàn）</p>
+              
+              <!-- 动词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（动词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 鼓励；勉励</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：于是太公劝其女功，极技巧。（《货殖列传序》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 劝说</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：劝君更尽一杯酒，西出阳关无故人。（《送元二使安西》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"劝"在文言文中均作动词用，核心含义与"言语激励"相关</li>
+              <li>表示"鼓励；勉励"时，侧重通过言语推动他人积极行动，多用于官方、长辈对晚辈或群体的引导</li>
+              <li>表示"劝说"时，侧重通过言语说服他人改变想法或行为，多用于人际间的沟通场景</li>
+              <li>判断时可关注对象："鼓励"多指向积极行为的推动，"劝说"多指向具体行为的改变</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"劝"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        sentence: "于是太公劝其女功，极技巧。（《货殖列传序》）",
+        targetWord: "劝",
+        options: {
+          A: "鼓励；勉励",
+          B: "劝说",
+          C: "奖励；表彰"
+        },
+        correct: "A",
+        explanation: "“劝”在这里是动词，意为“鼓励；勉励”。句中描述姜太公鼓励妇女从事蚕桑纺织，极力发展工艺技巧，体现了对农业和手工业的重视。",
+        examples: [
+          "劝学育才，为国之本。（《礼记》）",
+          "文王以民力为台为沼，而民欢乐之，谓其台曰灵台，谓其沼曰灵沼，乐其有麋鹿鱼鳖。古之人与民偕乐，故能乐也。（《孟子》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        sentence: "劝君更尽一杯酒，西出阳关无故人。（《送元二使安西》）",
+        targetWord: "劝",
+        options: {
+          A: "鼓励；勉励",
+          B: "劝说",
+          C: "强迫；迫使"
+        },
+        correct: "B",
+        explanation: "“劝”在这里是动词，意为“劝说”。诗句中诗人劝说友人再饮一杯酒，因为西行出阳关后就难遇故旧了，体现了深厚的离别之情。",
+        examples: [
+          "再三劝客杯中酒。（《渔家傲》）",
+          "主人有酒且莫斟，听我一曲悲来吟。（《悲来吟》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "动词",
+        sentence: "举世皆浊我独清，众人皆醉我独醒，是以见放。渔父莞尔而笑，鼓枻而去，乃歌曰：“沧浪之水清兮，可以濯吾缨；沧浪之水浊兮，可以濯吾足。”遂去，不复与言。（《渔父》）",
+        targetWord: "（隐含劝意）",
+        options: {
+          A: "鼓励坚持自我",
+          B: "劝说随遇而安",
+          C: "讽刺清高自傲"
+        },
+        correct: "B",
+        explanation: "渔父的歌谣隐含“劝说”之意，劝屈原不必过于清高，应随世道变化而自处，体现了与世推移的处世哲学。这里的劝说通过比喻表达，更为含蓄委婉。",
+        examples: [
+          "当局者迷，旁观者清。（《新唐书》）",
+          "水至清则无鱼，人至察则无徒。（《大戴礼记》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "动词",
+        sentence: "故赏莫如厚而信，使民利之；罚莫如重而必，使民畏之；法莫如一而固，使民知之。故主施赏不迁，行诛无赦，誉辅其赏，毁随其罚，则贤不肖俱尽其力矣。（《韩非子》）",
+        targetWord: "（赏罚的劝惩）",
+        options: {
+          A: "鼓励行善",
+          B: "劝说改过",
+          C: "强制服从"
+        },
+        correct: "A",
+        explanation: "文中通过厚赏立信的主张，体现“劝”的“鼓励”之意，即通过奖赏机制鼓励民众积极获利，从而引导其尽力而为，这是法家思想中“劝善”的典型体现。",
+        examples: [
+          "赏罚分明，则善恶有别。（《贞观政要》）",
+          "劝善惩恶，国之大纲。（《晋书》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        sentence: "子路问曰：“闻斯行诸？”子曰：“有父兄在，如之何其闻斯行之？”冉有问曰：“闻斯行诸？”子曰：“闻斯行之。”公西华曰：“由也问闻斯行诸，子曰，‘有父兄在’；求也问闻斯行诸，子曰，‘闻斯行之’。赤也惑，敢问。”子曰：“求也退，故进之；由也兼人，故退之。”（《论语》）",
+        targetWord: "（孔子的劝诫）",
+        options: {
+          A: "鼓励冉有行动",
+          B: "劝说子路激进",
+          C: "阻止公西华提问"
+        },
+        correct: "A",
+        explanation: "孔子对冉有“闻斯行之”的回答，包含“鼓励”之意，因冉有性格退缩，故鼓励他勇于行动。这种因材施教的引导，体现了“劝”的激励作用。",
+        examples: [
+          "知者不惑，仁者不忧，勇者不惧。（《论语》）",
+          "三人行，必有我师焉。择其善者而从之，其不善者而改之。（《论语》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

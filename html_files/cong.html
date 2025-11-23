@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航保持不变 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col">
+      <!-- 题目练习区 -->
+      <section class="w-full">
+        <!-- "从"字详解板块 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            "从"字详解
+          </h2>
+          
+          <div class="space-y-6 font-classic">
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+              
+              <div class="space-y-8 pl-2">
+                <p class="font-medium text-lg">从（多音多义字）</p>
+                
+                <!-- cóng 读音用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">cóng</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 动词：跟随；跟从</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：有美人名虞，常幸从。（《垓下之战》）</p>
+                      <p class="text-sm text-ink/70 italic">例：臣尝从大王与燕王会境上。（《廉颇蔺相如列传》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 动词：顺从；听从</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：多闻，择其善者而从之。（《论语·十则》）</p>
+                      <p class="text-sm text-ink/70 italic">例：从之如流水。（《邹忌讽齐王纳谏》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 动词：参与、从事</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：弟走从军阿姨死。（《琵琶行》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 动词：依傍；紧靠着</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：樊哙从良坐。（《鸿门宴》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 动词：行；做；处理</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：而行之既久，则又以军法从事。（《教战守策》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑥ 动词：任；任凭</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：七十而从心所欲，不逾矩。（《论语·为政》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑦ 形容词：副，与"正"相对</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：前世职次皆无从品，魏氏始置之。（《魏书·官氏志》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑧ 介词：由；自</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：从此道至吾军，不过二十里耳。（《鸿门宴》）</p>
+                      <p class="text-sm text-ink/70 italic">例：旦日，客从外来。（《邹忌讽齐王纳谏》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑨ 介词：跟；向</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：尝趋百里外从乡之先达执经扣问。（《送东阳马生序》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- zòng 读音用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">zòng（通"纵"）</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 名词：合纵</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：衡从其亩。（《诗经·齐风·南山》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 动词：放纵</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：其后复放从自若。（《汉书·王吉传》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+              <ul class="list-disc list-inside pl-2 space-y-2">
+                <li>"从"是多音多义字，主要有cóng和zòng两个读音，cóng为常见读音</li>
+                <li>读cóng时词性丰富，可作动词（含义最多）、形容词和介词</li>
+                <li>动词"从"的核心含义是"跟随"，引申为"听从""参与"等义，需结合语境判断</li>
+                <li>读zòng时多为通假字用法，通"纵"，表"合纵"或"放纵"义，多见于先秦文献</li>
+                <li>介词"从"表起点时，与现代汉语"从"的用法接近，容易理解</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 选择题区域 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            词义选择题
+          </h2>
+          
+          <!-- 题目显示区 -->
+          <div id="questionArea" class="mb-8">
+            <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+              请选择下列句子中加点词的正确释义
+            </p>
+            
+            <!-- 选项区 -->
+            <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                A. 选项一
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                B. 选项二
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                C. 选项三
+              </button>
+            </div>
+          </div>
+          
+          <!-- 反馈区 -->
+          <div id="feedbackArea" class="hidden mb-6">
+            <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+              <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+            </div>
+            
+            <div id="wrongFeedback" class="hidden">
+              <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+                有点遗憾哦，再仔细想想～
+              </p>
+              
+              <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+                <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+                <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+                <p class="mb-1"><span class="font-bold">例句：</span></p>
+                <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                  <li>例句1</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+                加入错题本
+              </button>
+              <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 题目内容更新为"从"字相关
+    const questions = [
+      {
+        id: 1,
+        pronunciation: "cóng",
+        type: "动词",
+        sentence: "有美人名虞，常幸从。（《垓下之战》）",
+        targetWord: "从",
+        options: {
+          A: "顺从；听从",
+          B: "跟随；跟从",
+          C: "参与、从事"
+        },
+        correct: "B",
+        explanation: "“从”在这里读cóng，作动词，意为“跟随；跟从”。句中是说有位名叫虞姬的美人，常得到（项羽的）宠爱并跟随在他身边。",
+        examples: [
+          "臣尝从大王与燕王会境上。（《廉颇蔺相如列传》）",
+          "从者多艰其昏晨之往来。（《苦斋记》，跟随的人）"
+        ]
+      },
+      {
+        id: 2,
+        pronunciation: "cóng",
+        type: "动词",
+        sentence: "多闻，择其善者而从之。（《论语·十则》）",
+        targetWord: "从",
+        options: {
+          A: "任；任凭",
+          B: "跟随；跟从",
+          C: "顺从；听从"
+        },
+        correct: "C",
+        explanation: "“从”在这里读cóng，作动词，意为“顺从；听从”。句中是说多方面地听取，选择其中好的方面去遵循、学习。",
+        examples: [
+          "从之如流水。（《邹忌讽齐王纳谏》）",
+          "民弗从也（《曹刿论战》，百姓不会听从）"
+        ]
+      },
+      {
+        id: 3,
+        pronunciation: "cóng",
+        type: "动词",
+        sentence: "弟走从军阿姨死。（《琵琶行》）",
+        targetWord: "从",
+        options: {
+          A: "参与、从事",
+          B: "行；做；处理",
+          C: "依傍；紧靠着"
+        },
+        correct: "A",
+        explanation: "“从”在这里读cóng，作动词，意为“参与、从事”。句中是说弟弟离家参军，养母也去世了。",
+        examples: [
+          "从事于道者，同于道（《道德经》，从事于道的人）",
+          "自幼好从军事（从小喜欢参与军事）"
+        ]
+      },
+      {
+        id: 4,
+        pronunciation: "cóng",
+        type: "动词",
+        sentence: "樊哙从良坐。（《鸿门宴》）",
+        targetWord: "从",
+        options: {
+          A: "顺从；听从",
+          B: "依傍；紧靠着",
+          C: "任；任凭"
+        },
+        correct: "B",
+        explanation: "“从”在这里读cóng，作动词，意为“依傍；紧靠着”。句中是说樊哙紧靠着张良坐下。",
+        examples: [
+          "依山傍水（紧靠着山，临近着水）",
+          "从其坐而问焉（靠着他的座位向他请教）"
+        ]
+      },
+      {
+        id: 5,
+        pronunciation: "cóng",
+        type: "动词",
+        sentence: "而行之既久，则又以军法从事。（《教战守策》）",
+        targetWord: "从",
+        options: {
+          A: "行；做；处理",
+          B: "参与、从事",
+          C: "跟随；跟从"
+        },
+        correct: "A",
+        explanation: "“从”在这里读cóng，作动词，意为“行；做；处理”。句中是说而实行得久了，就又用军法来处理。",
+        examples: [
+          "慎重从事（谨慎地处理事情）",
+          "姑从缓议（暂且缓一步处理商议）"
+        ]
+      },
+      {
+        id: 6,
+        pronunciation: "cóng",
+        type: "动词",
+        sentence: "七十而从心所欲，不逾矩。（《论语·为政》）",
+        targetWord: "从",
+        options: {
+          A: "顺从；听从",
+          B: "行；做；处理",
+          C: "任；任凭"
+        },
+        correct: "C",
+        explanation: "“从”在这里读cóng，作动词，意为“任；任凭”。句中是说七十岁时任凭自己的心意行事，也不会超出规矩。",
+        examples: [
+          "从吾所好（任凭我所喜欢的）",
+          "从其意而行（任凭他的意愿去做）"
+        ]
+      },
+      {
+        id: 7,
+        pronunciation: "cóng",
+        type: "介词",
+        sentence: "从此道至吾军，不过二十里耳。（《鸿门宴》）",
+        targetWord: "从",
+        options: {
+          A: "跟；向",
+          B: "由；自",
+          C: "为了；因为"
+        },
+        correct: "B",
+        explanation: "“从”在这里读cóng，作介词，意为“由；自”。句中是说从这条路到我们军营，不过二十里罢了。",
+        examples: [
+          "旦日，客从外来。（《邹忌讽齐王纳谏》）",
+          "从早到晚（从早晨到晚上）"
+        ]
+      },
+      {
+        id: 8,
+        pronunciation: "cóng",
+        type: "介词",
+        sentence: "尝趋百里外从乡之先达执经扣问。（《送东阳马生序》）",
+        targetWord: "从",
+        options: {
+          A: "由；自",
+          B: "跟；向",
+          C: "对于；关于"
+        },
+        correct: "B",
+        explanation: "“从”在这里读cóng，作介词，意为“跟；向”。句中是说曾经跑到百里之外，向同乡有名望的前辈拿着经书请教。",
+        examples: [
+          "从师学习（向老师学习）",
+          "从其请教（向他请教）"
+        ]
+      },
+      {
+        id: 9,
+        pronunciation: "zòng",
+        type: "动词",
+        sentence: "其后复放从自若。（《汉书·王吉传》）",
+        targetWord: "从",
+        options: {
+          A: "合纵",
+          B: "放纵",
+          C: "跟随"
+        },
+        correct: "B",
+        explanation: "“从”在这里读zòng，通“纵”，作动词，意为“放纵”。句中是说那以后又放纵自己，像从前一样。",
+        examples: [
+          "从欲妄行（放纵欲望，胡乱行事）",
+          "饮酒从横（饮酒放纵，不受约束）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

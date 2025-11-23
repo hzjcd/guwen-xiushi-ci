@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 右</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">右</span>字练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "右"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "右"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词性与词义</h3>
+            
+            <div class="space-y-8 pl-2">
+              <p class="font-medium text-lg">右（yòu）</p>
+              
+              <!-- 动词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">（动词）</p>
+                
+                <div class="pl-4 space-y-4 mt-2">
+                  <div>
+                    <p class="font-medium">① 助，帮助。后多作"佑"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：保右命之。（《诗·大雅·嘉乐》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 尊崇；崇尚</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：兼爱，尚贤，右鬼，非命，墨子之所立也。（《淮南子》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 保佑。后作"祐"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：保右命尔。（《诗·大雅·大明》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 通"侑"。劝食</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：既右飨之。（《诗·周颂·我将》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 名词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">（名词）</p>
+                
+                <div class="pl-4 space-y-4 mt-2">
+                  <div>
+                    <p class="font-medium">① 右手</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：右秉白旄以麾。（《书·牧誓》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 右手一边的方位，与"左"相对</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：效驾，奋衣由右上。（《礼记》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 车右。即参乘，古代战车上站在右边负责警卫的武士</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：菜驹为右。（《左传·僖公三十二——三十三年》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 形容词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">（形容词）</p>
+                
+                <div class="pl-4 space-y-4 mt-2">
+                  <div>
+                    <p class="font-medium">① 古代崇右，故以右为上，为贵，为高</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：位在廉颇之右。（《史记·廉颇蔺相如列传》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"右"读yòu，可作动词、名词和形容词，含义丰富</li>
+              <li>作动词时多与"帮助、保佑"相关，后多写作"佑"或"祐"</li>
+              <li>作名词时主要表示方位（与"左"相对）、右手或古代战车上的警卫武士</li>
+              <li>古代以右为尊，故形容词用法表示"上、贵、高"，如"位在廉颇之右"</li>
+              <li>注意区分"右"作为方位词和表示尊贵地位的不同用法</li>
+              <li>通假字"侑"（劝食）的用法需结合语境判断</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-2"><span class="font-bold">读音：</span><span id="pronunciation" class="text-blue-600">yòu</span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"右"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "形容词",
+        pronunciation: "yòu",
+        sentence: "位在廉颇之右。（《史记·廉颇蔺相如列传》）",
+        targetWord: "右",
+        options: {
+          A: "右边的位置",
+          B: "地位尊贵",
+          C: "右侧的座位"
+        },
+        correct: "B",
+        explanation: "“右”在这里作形容词，古代以右为尊，故表示“地位尊贵、在上”，此句指蔺相如的职位比廉颇高。",
+        examples: [
+          "是时以大中丞抚吴者为魏之私人，周公之逮所由使也；吴之民方痛心焉，于是乘其厉声以呵，则噪而相逐，中丞匿于溷藩以免。既而以吴民之乱请于朝，按诛五人，曰颜佩韦、杨念如、马杰、沈扬、周文元，即今之傫然在墓者也。然五人之当刑也，意气扬扬，呼中丞之名而詈之，谈笑以死。断头置城上，颜色不少变。有贤士大夫发五十金，买五人之脰而函之，卒与尸合。故今之墓中全乎为五人也。（节选自《五人墓碑记》）",
+          "古代官场以右为尊，“左迁”则表示贬官"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        pronunciation: "yòu",
+        sentence: "保右命之。（《诗·大雅·嘉乐》）",
+        targetWord: "右",
+        options: {
+          A: "右边",
+          B: "保佑",
+          C: "辅助"
+        },
+        correct: "C",
+        explanation: "“右”在这里作动词，意为“帮助、辅助”，后多写作“佑”，此句指上天辅助并授命于他。",
+        examples: [
+          "天右助之。（《国语·晋语》）",
+          "右者，助也，言天助之也。（《说文解字注》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "名词",
+        pronunciation: "yòu",
+        sentence: "右秉白旄以麾。（《书·牧誓》）",
+        targetWord: "右",
+        options: {
+          A: "右手",
+          B: "右侧",
+          C: "车右"
+        },
+        correct: "A",
+        explanation: "“右”在这里作名词，指“右手”，描述右手拿着白色的旄牛尾来指挥。",
+        examples: [
+          "左执黄钺，右秉白旄。（《史记·周本纪》）",
+          "右援枹而鼓。（《左传·成公二年》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "名词",
+        pronunciation: "yòu",
+        sentence: "菜驹为右。（《左传·僖公三十二——三十三年》）",
+        targetWord: "右",
+        options: {
+          A: "右侧",
+          B: "车右（参乘）",
+          C: "右边的人"
+        },
+        correct: "B",
+        explanation: "“右”在这里作名词，指“车右”，即古代战车上站在右边负责警卫的武士，菜驹担任这一职务。",
+        examples: [
+          "晋侯作三行以御狄，荀林父将中行，屠击将右行，先蔑将左行。（《左传·僖公二十八年》）",
+          "车有左右，右谓勇力之士，执戈盾以卫君。（《礼记正义》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        pronunciation: "yòu",
+        sentence: "兼爱，尚贤，右鬼，非命，墨子之所立也。（《淮南子》）",
+        targetWord: "右",
+        options: {
+          A: "右边",
+          B: "保佑",
+          C: "尊崇"
+        },
+        correct: "C",
+        explanation: "“右”在这里作动词，意为“尊崇、崇尚”，描述墨子学派崇尚鬼神的思想主张。",
+        examples: [
+          "右文尚质，救弊补偏。（《文心雕龙》）",
+          "孔某所行，心术所至也。其徒属弟子皆效孔某：子贡、季路，辅孔悝乱乎卫，阳货乱乎齐，佛肸以中牟叛，漆雕刑残，莫大焉！夫为弟子后生，其师必修其言，法其行，力不足、知弗及而后已。今孔某之行如此，儒士则可以疑矣！（节选自《墨子·非儒》）"
+        ]
+      },
+      {
+        id: 6,
+        type: "动词",
+        pronunciation: "yòu",
+        sentence: "既右飨之。（《诗·周颂·我将》）",
+        targetWord: "右",
+        options: {
+          A: "劝食",
+          B: "保佑",
+          C: "辅助"
+        },
+        correct: "A",
+        explanation: "“右”在这里通“侑”，作动词，意为“劝食”，指在祭祀时劝神灵享用祭品。",
+        examples: [
+          "以乐侑食。（《周礼·天官·膳夫》）",
+          "主人酬宾，束帛侑币。（《仪礼·聘礼》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "名词",
+        pronunciation: "yòu",
+        sentence: "效驾，奋衣由右上。（《礼记》）",
+        targetWord: "右",
+        options: {
+          A: "右边的人",
+          B: "右侧方位",
+          C: "尊贵地位"
+        },
+        correct: "B",
+        explanation: "“右”在这里作名词，指“右手一边的方位”，与“左”相对，描述整理衣服从右边上车。",
+        examples: [
+          "乘路车者，必履其左。（《礼记·曲礼》）",
+          "孔子与门人立，拱而尚右，二三子亦皆尚右。（《论语·乡党》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions_you')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const pronunciationEl = document.getElementById('pronunciation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        pronunciationEl.textContent = currentQuestion.pronunciation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions_you', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+            <div class="p-2 bg-blue-50 border border-blue-200 rounded">
+              <span class="font-medium">读音：</span>${item.pronunciation}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions_you', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

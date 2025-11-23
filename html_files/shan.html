@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 善</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "善"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "善"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+            
+            <div class="space-y-6 pl-2">
+              <p class="font-medium text-lg">善（shàn）</p>
+              
+              <!-- 动词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（动词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 通"缮"。修治；整理</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：善刀而藏之。（《庖丁解牛》）</p>
+                  </div>
+                  <div>
+                    <p class="font-medium">② 善于；擅长</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：君子生非异也，善假于物也。（《劝学》）</p>
+                  </div>
+                  <div>
+                    <p class="font-medium">③ 亲善；友好</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：楚左尹项伯者，项羽季父也，素善留侯张良。（《鸿门宴》）</p>
+                  </div>
+                  <div>
+                    <p class="font-medium">④ 喜欢；羡慕</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：善万物之得时，感吾生之行休。（《归去来兮辞》）</p>
+                  </div>
+                  <div>
+                    <p class="font-medium">⑤ 具有杰出的（惊人的）成就</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：羲之之书晚乃善。（《墨池记》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 形容词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（形容词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 好；善良</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：择其善者而从之，其不善者而改之。（《〈论语〉六则》）</p>
+                  </div>
+                  <div>
+                    <p class="font-medium">② 表示赞许。同意的应答之词</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：王曰："善。"乃下令。（《邹忌讽齐王纳谏》）</p>
+                  </div>
+                  <div>
+                    <p class="font-medium">③ 熟悉</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：我看着面善，心里就算是旧相识。（《林黛玉进贾府》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 副词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（副词）</p>
+                <div class="pl-4 mt-2">
+                  <p class="font-medium">① 好好地</p>
+                  <p class="text-sm text-ink/70 italic mt-1">例：愿得将军之首以献秦，秦王必喜而善见臣。（《荆轲刺秦王》）</p>
+                </div>
+              </div>
+              
+              <!-- 名词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（名词）</p>
+                <div class="pl-4 mt-2">
+                  <p class="font-medium">① 好的行为；长处</p>
+                  <p class="text-sm text-ink/70 italic mt-1">例：惟王君之心，岂爱人之善，虽一能为以废，而因为及其迹邪？（《墨池记》）</p>
+                </div>
+              </div>
+              
+              <!-- 意动用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（意动用法）</p>
+                <div class="pl-4 mt-2">
+                  <p class="font-medium">① 认为……好</p>
+                  <p class="text-sm text-ink/70 italic mt-1">例：良数以《太公兵法》说沛公，沛公善之。（《史记·留侯世家》）</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>通假用法"善（通'缮'）"仅见于特定语境，需结合"修治、整理"义项判断</li>
+              <li>动词"善"表"擅长"时后接动作（如"善画"），表"亲善"时后接对象（如"善张良"）</li>
+              <li>形容词表赞许的"善"多用于对话单独成句，与表"善良"的形容词用法可通过语境区分</li>
+              <li>意动用法"善之"需满足"主语认为宾语好"的语法结构，与一般动词用法不同</li>
+              <li>副词"善"必修饰动词（如"善见臣"），名词"善"多作宾语（如"爱人之善"）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"善"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        sentence: "善刀而藏之。（《庖丁解牛》）",
+        targetWord: "善",
+        options: {
+          A: "善于；擅长",
+          B: "通'缮'。修治；整理",
+          C: "亲善；友好"
+        },
+        correct: "B",
+        explanation: "此处"善"为通假字，通"缮"，意为"修治；整理"，描述庖丁解牛后擦拭刀具并收藏的动作，体现其对工具的爱惜与技艺的娴熟。",
+        examples: [
+          "缮甲兵，具卒乘，将袭郑。（《左传·僖公三十三年》）",
+          "治其故器，善其新器。（《周礼·天官·宫正》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        sentence: "君子生非异也，善假于物也。（《劝学》）",
+        targetWord: "善",
+        options: {
+          A: "喜欢；羡慕",
+          B: "具有杰出的成就",
+          C: "善于；擅长"
+        },
+        correct: "C",
+        explanation: "此处"善"为动词，表"善于；擅长"，强调君子并非天生与众不同，而是擅长借助外物的力量，体现了荀子"学不可以已"的教育思想。",
+        examples: [
+          "伯牙善鼓琴，钟子期善听。（《列子·汤问》）",
+          "弈秋，通国之善弈者也。（《孟子·告子上》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "动词",
+        sentence: "楚左尹项伯者，项羽季父也，素善留侯张良。（《鸿门宴》）",
+        targetWord: "善",
+        options: {
+          A: "亲善；友好",
+          B: "好；善良",
+          C: "熟悉"
+        },
+        correct: "A",
+        explanation: "此处"善"为动词，表"亲善；友好"，描述项伯与张良素来的友好关系，这一背景是鸿门宴情节发展的关键伏笔，展现了楚汉相争时期复杂的人际关系。",
+        examples: [
+          "秦善魏而疏齐。（《战国策·齐策》）",
+          "两国交善，百姓安乐。（《史记·张仪列传》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "动词",
+        sentence: "善万物之得时，感吾生之行休。（《归去来兮辞》）",
+        targetWord: "善",
+        options: {
+          A: "认为……好",
+          B: "喜欢；羡慕",
+          C: "善于；擅长"
+        },
+        correct: "B",
+        explanation: "此处"善"为动词，表"喜欢；羡慕"，表达陶渊明对万物顺应时序生长的赞美，与自身生命将尽的感慨形成对比，体现归隐后的心境。",
+        examples: [
+          "其所善者，吾则行之；其所恶者，吾则改之。（《左传》）",
+          "余独善其身。（《孟子·尽心上》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "形容词",
+        sentence: "择其善者而从之，其不善者而改之。（《〈论语〉六则》）",
+        targetWord: "善",
+        options: {
+          A: "表示赞许",
+          B: "好；善良",
+          C: "好好地"
+        },
+        correct: "B",
+        explanation: "此处"善"为形容词，表"好；善良"，指选择别人的优点学习，对别人的缺点引以为戒，体现了孔子"三人行必有我师"的学习态度与修身方法。",
+        examples: [
+          "善言暖于布帛，伤人之言深于矛戟。（《荀子·荣辱》）",
+          "积善成德，而神明自得。（《劝学》）"
+        ]
+      },
+      {
+        id: 6,
+        type: "形容词",
+        sentence: "王曰：'善。'乃下令。（《邹忌讽齐王纳谏》）",
+        targetWord: "善",
+        options: {
+          A: "熟悉",
+          B: "好；善良",
+          C: "表示赞许。同意的应答之词"
+        },
+        correct: "C",
+        explanation: "此处"善"为形容词作应答词，表"赞许；同意"，体现齐威王对邹忌讽谏的认可与从善如流的态度，为后文"战胜于朝廷"埋下伏笔。",
+        examples: [
+          "善！吾闻穷巷多怪，曲学多辩。（《庄子·秋水》）",
+          "上曰：'善。'乃下诏赦天下。（《史记·孝文本纪》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "副词",
+        sentence: "愿得将军之首以献秦，秦王必喜而善见臣。（《荆轲刺秦王》）",
+        targetWord: "善",
+        options: {
+          A: "好好地",
+          B: "善于",
+          C: "认为……好"
+        },
+        correct: "A",
+        explanation: "此处"善"为副词，表"好好地"，修饰动词"见"，描述荆轲对秦王接见态度的预判，展现其刺秦计划的周密性与决心。",
+        examples: [
+          "善待之，必有厚报。（《史记·陈涉世家》）",
+          "民富而府库实，然后可以善为国。（《盐铁论》）"
+        ]
+      },
+      {
+        id: 8,
+        type: "名词",
+        sentence: "惟王君之心，岂爱人之善，虽一能为以废，而因为及其迹邪？（《墨池记》）",
+        targetWord: "善",
+        options: {
+          A: "好；善良",
+          B: "好的行为；长处",
+          C: "善于；擅长"
+        },
+        correct: "B",
+        explanation: "此处"善"为名词，表"好的行为；长处"，指王羲之在书法上的成就，作者借此探讨"深造道德"与"工其书"的关系，强调勤学的重要性。",
+        examples: [
+          "三人行，必有我师焉，择其善者而从之。（《论语》）",
+          "闻善而不善，皆以告其上。（《墨子·尚同》）"
+        ]
+      },
+      {
+        id: 9,
+        type: "意动",
+        sentence: "良数以《太公兵法》说沛公，沛公善之。（《史记·留侯世家》）",
+        targetWord: "善",
+        options: {
+          A: "好的行为；长处",
+          B: "认为……好",
+          C: "善于；擅长"
+        },
+        correct: "B",
+        explanation: "此处"善"为意动用法，表"认为……好"，描述刘邦对张良所授兵法的认可，体现其知人善任的特点，为后文刘邦集团的发展奠定基础。",
+        examples: [
+          "渔人甚异之。（《桃花源记》）",
+          "吾妻之美我者，私我也。（《邹忌讽齐王纳谏》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

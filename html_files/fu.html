@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 负</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col">
+      <!-- 题目练习区 -->
+      <section class="w-full">
+        <!-- "负"字详解板块 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            "负"字详解
+          </h2>
+          
+          <div class="space-y-6 font-classic">
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+              
+              <div class="space-y-8 pl-2">
+                <p class="font-medium text-lg">负（主要作动词）</p>
+                
+                <!-- 动词用法 -->
+                <div class="pl-4 space-y-6">
+                  <p class="font-semibold">动词用法</p>
+                  
+                  <div class="space-y-6 pl-4">
+                    <div>
+                      <p class="font-medium">① 背；用木板驮大东西</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：命夸娥氏二子负二山。（《愚公移山》）</p>
+                      <p class="text-sm text-ink/70 italic">例：颁白者不负戴于道路矣。（《齐桓晋文之事》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 负担；承担；使……承担</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：而智日困，而自负其责也。（《淮南子·主术》）</p>
+                      <p class="text-sm text-ink/70 italic">例：均之二策，宁许以负秦曲。（《廉颇蔺相如列传》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 蒙受；遭受</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：不明不暗，负屈衔冤。（《窦娥冤》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 背倚；背靠着</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：子夏蹶然而起，负墙而立。（《礼记·孔子闲居》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 依靠；凭借</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：秦贪，负其强，以空言求璧。（《廉颇蔺相如列传》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑥ 辜负；对不起</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：臣诚恐见欺于大王而负赵。（《廉颇蔺相如列传》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑦ 违背；背弃</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：相如度秦王虽斋，决负约不偿赵城。（《廉颇蔺相如列传》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑧ 失败</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：故不战而强弱胜负已判矣。（《六国论》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+              <ul class="list-disc list-inside pl-2 space-y-2">
+                <li>"负"在古文中主要作动词，含义丰富，需结合语境判断具体意义</li>
+                <li>表示"背载"义时，可指人背物，也可指动物驮物，如"负山"即驮着山</li>
+                <li>"使……承担"为使动用法，如"负秦曲"意为"使秦国承担理亏的责任"</li>
+                <li>"依靠"与"辜负"义易混淆，前者含"凭借优势"之意，后者含"对不起信任"之意</li>
+                <li>"失败"义由"背负、承担"引申而来，多用于"胜负"固定搭配中</li>
+                <li>《廉颇蔺相如列传》中"负"字多次出现，且含义不同，可对比学习</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 选择题区域 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            词义选择题
+          </h2>
+          
+          <!-- 题目显示区 -->
+          <div id="questionArea" class="mb-8">
+            <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+              请选择下列句子中加点词的正确释义
+            </p>
+            
+            <!-- 选项区 -->
+            <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                A. 选项一
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                B. 选项二
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                C. 选项三
+              </button>
+            </div>
+          </div>
+          
+          <!-- 反馈区 -->
+          <div id="feedbackArea" class="hidden mb-6">
+            <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+              <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+            </div>
+            
+            <div id="wrongFeedback" class="hidden">
+              <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+                有点遗憾哦，再仔细想想～
+              </p>
+              
+              <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+                <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+                <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+                <p class="mb-1"><span class="font-bold">例句：</span></p>
+                <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                  <li>例句1</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+                加入错题本
+              </button>
+              <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // "负"字相关题目
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        sentence: "命夸娥氏二子负二山。（《愚公移山》）",
+        targetWord: "负",
+        options: {
+          A: "负担；承担",
+          B: "背；用木板驮大东西",
+          C: "依靠；凭借"
+        },
+        correct: "B",
+        explanation: "“负”在这里作动词，意为“背；用木板驮大东西”。句中是说命令夸娥氏的两个儿子背着两座山。",
+        examples: [
+          "负米养亲（背着米赡养父母，形容孝顺）",
+          "负重涉远（背着重物走远路，比喻能够承担艰巨任务）"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        sentence: "颁白者不负戴于道路矣。（《齐桓晋文之事》）",
+        targetWord: "负",
+        options: {
+          A: "背；背负",
+          B: "辜负；对不起",
+          C: "违背；背弃"
+        },
+        correct: "A",
+        explanation: "“负”在这里作动词，意为“背；背负”。句中是说头发花白的老人不会在路上背着或顶着东西了（形容社会福利好）。",
+        examples: [
+          "负戴争先（背负东西时互相争先，形容勤劳）",
+          "负薪救火（背着柴草去救火，比喻用错误的方法消除灾祸）"
+        ]
+      },
+      {
+        id: 3,
+        type: "动词",
+        sentence: "均之二策，宁许以负秦曲。（《廉颇蔺相如列传》）",
+        targetWord: "负",
+        options: {
+          A: "蒙受；遭受",
+          B: "失败",
+          C: "使……承担"
+        },
+        correct: "C",
+        explanation: "“负”在这里作动词，为使动用法，意为“使……承担”。句中是说比较这两个计策，宁可答应（给秦国璧），来使秦国承担理亏的责任。",
+        examples: [
+          "以身负国（用自身承担国家重任）",
+          "负任蒙劳（承担重任，蒙受劳苦）"
+        ]
+      },
+      {
+        id: 4,
+        type: "动词",
+        sentence: "不明不暗，负屈衔冤。（《窦娥冤》）",
+        targetWord: "负",
+        options: {
+          A: "背倚；背靠着",
+          B: "蒙受；遭受",
+          C: "负担；承担"
+        },
+        correct: "B",
+        explanation: "“负”在这里作动词，意为“蒙受；遭受”。句中是说（窦娥）糊里糊涂地蒙受委屈，含着冤情。",
+        examples: [
+          "负屈含冤（遭受委屈，怀着冤屈）",
+          "负诟忍尤（遭受责骂和怨恨而忍耐着）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        sentence: "子夏蹶然而起，负墙而立。（《礼记·孔子闲居》）",
+        targetWord: "负",
+        options: {
+          A: "背倚；背靠着",
+          B: "依靠；凭借",
+          C: "辜负；对不起"
+        },
+        correct: "A",
+        explanation: "“负”在这里作动词，意为“背倚；背靠着”。句中是说子夏猛然站起来，背靠着墙站立。",
+        examples: [
+          "负户而歌（背靠着门户唱歌）",
+          "负壁而坐（背靠着墙壁坐下）"
+        ]
+      },
+      {
+        id: 6,
+        type: "动词",
+        sentence: "秦贪，负其强，以空言求璧。（《廉颇蔺相如列传》）",
+        targetWord: "负",
+        options: {
+          A: "违背；背弃",
+          B: "依靠；凭借",
+          C: "失败"
+        },
+        correct: "B",
+        explanation: "“负”在这里作动词，意为“依靠；凭借”。句中是说秦国贪婪，凭借它的强大，用空话来索取和氏璧。",
+        examples: [
+          "负固不服（凭借险阻顽固抵抗）",
+          "负势竞上（凭借地势争相向上，出自《与朱元思书》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "动词",
+        sentence: "臣诚恐见欺于大王而负赵。（《廉颇蔺相如列传》）",
+        targetWord: "负",
+        options: {
+          A: "辜负；对不起",
+          B: "违背；背弃",
+          C: "蒙受；遭受"
+        },
+        correct: "A",
+        explanation: "“负”在这里作动词，意为“辜负；对不起”。句中是说我实在害怕被大王欺骗而对不起赵国。",
+        examples: [
+          "不负所托（不辜负别人的托付）",
+          "有负众望（辜负了大家的期望）"
+        ]
+      },
+      {
+        id: 8,
+        type: "动词",
+        sentence: "相如度秦王虽斋，决负约不偿赵城。（《廉颇蔺相如列传》）",
+        targetWord: "负",
+        options: {
+          A: "失败",
+          B: "辜负；对不起",
+          C: "违背；背弃"
+        },
+        correct: "C",
+        explanation: "“负”在这里作动词，意为“违背；背弃”。句中是说相如估计秦王即使斋戒，也必定会违背约定不偿还赵国城池。",
+        examples: [
+          "负信背约（违背信用和约定）",
+          "负盟毁约（违背盟约，破坏约定）"
+        ]
+      },
+      {
+        id: 9,
+        type: "动词",
+        sentence: "故不战而强弱胜负已判矣。（《六国论》）",
+        targetWord: "负",
+        options: {
+          A: "失败",
+          B: "负担；承担",
+          C: "依靠；凭借"
+        },
+        correct: "A",
+        explanation: "“负”在这里作动词，意为“失败”。句中是说所以不用打仗，谁强谁弱，谁胜谁负就已经分得清清楚楚了。",
+        examples: [
+          "胜负乃兵家常事（胜利和失败是军事上的常有的事）",
+          "一决胜负（进行一次较量以决定胜败）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航保持不变 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col">
+      <!-- 题目练习区 -->
+      <section class="w-full">
+        <!-- "得"字详解板块 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            "得"字详解
+          </h2>
+          
+          <div class="space-y-6 font-classic">
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+              
+              <div class="space-y-8 pl-2">
+                <p class="font-medium text-lg">得（多类词）</p>
+                
+                <!-- 名词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">名词</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 心得；收获</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：古人之观于天地，……往往有得。（《游褒禅山记》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 动词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">动词</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 获得；得到；取得</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：一箪食，一豆羹，得之则生，弗得则死。（《鱼我所欲也》）</p>
+                      <p class="text-sm text-ink/70 italic">例：汉皆已得楚乎？（《垓下之战》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 贪求；贪得</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：戒之在得。（《论语·季氏》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 领会；理解</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：宋有狙公者，爱狙，养之成群，能解狙之意，狙亦得公之心。（《朝三暮四》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 实现；达到</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：既得志则纵情以傲物。（《谏太宗十思疏》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 能；能够</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：项王自度不得脱。（《垓下之战》）</p>
+                      <p class="text-sm text-ink/70 italic">例：以是人多以书假余，余因得遍观群书。（《送东阳马生序》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 形容词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">形容词</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 得意；满足</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：当其欣于所遇，暂得于己，快然自足。（《兰亭集序》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 合适；恰当</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：此言得之。（《六国论》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 副词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">副词</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 应该；应当</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：君为我呼入，吾得兄事之。（《鸿门宴》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 必须</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：这件事还得你去才弄的明白。（《红楼梦》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 助词用法 -->
+                <div>
+                  <p class="font-bold text-cinnabar">助词</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 表示完成或补充说明结果</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：十三学得琵琶成，名属教坊第一部。（《琵琶行》）</p>
+                      <p class="text-sm text-ink/70 italic">例：元嘉草草，封狼居胥，赢得仓皇北顾。（《永遇乐·京口北固亭怀古》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+              <ul class="list-disc list-inside pl-2 space-y-2">
+                <li>"得"是文言文常用字，词性多样，需根据语境准确判断</li>
+                <li>动词"得"含义最丰富，核心是"获得"，引申出"能够""理解"等义</li>
+                <li>作助词时读轻声，用于动词后表示完成或结果，与现代汉语用法相通</li>
+                <li>形容词"得"表示"恰当"时，常用于"得之"结构中</li>
+                <li>副词"得"表示"应该"或"必须"，语气较为委婉</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 选择题区域 -->
+        <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+          <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+            词义选择题
+          </h2>
+          
+          <!-- 题目显示区 -->
+          <div id="questionArea" class="mb-8">
+            <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+              请选择下列句子中加点词的正确释义
+            </p>
+            
+            <!-- 选项区 -->
+            <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                A. 选项一
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                B. 选项二
+              </button>
+              <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+                C. 选项三
+              </button>
+            </div>
+          </div>
+          
+          <!-- 反馈区 -->
+          <div id="feedbackArea" class="hidden mb-6">
+            <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+              <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+            </div>
+            
+            <div id="wrongFeedback" class="hidden">
+              <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+                有点遗憾哦，再仔细想想～
+              </p>
+              
+              <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+                <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+                <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+                <p class="mb-1"><span class="font-bold">例句：</span></p>
+                <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                  <li>例句1</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 操作按钮 -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+                加入错题本
+              </button>
+              <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+                下一题
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 题目内容更新为"得"字相关
+    const questions = [
+      {
+        id: 1,
+        type: "名词",
+        sentence: "古人之观于天地，……往往有得。（《游褒禅山记》）",
+        targetWord: "得",
+        options: {
+          A: "获得；得到",
+          B: "心得；收获",
+          C: "能；能够"
+        },
+        correct: "B",
+        explanation: "“得”在这里作名词，意为“心得；收获”。句中是说古人观察天地万物，往往有自己的心得和收获。",
+        examples: [
+          "有得则识之（有心得就记录下来）",
+          "读书有得，便欣然忘食（读书有了收获，就高兴得忘了吃饭）"
+        ]
+      },
+      {
+        id: 2,
+        type: "动词",
+        sentence: "一箪食，一豆羹，得之则生，弗得则死。（《鱼我所欲也》）",
+        targetWord: "得",
+        options: {
+          A: "能；能够",
+          B: "领会；理解",
+          C: "获得；得到；取得"
+        },
+        correct: "C",
+        explanation: "“得”在这里作动词，意为“获得；得到；取得”。句中是说一碗饭，一碗汤，得到它就能活下去，得不到就会饿死。",
+        examples: [
+          "汉皆已得楚乎？（《垓下之战》，汉军已经占领楚地了吗）",
+          "卖炭得钱何所营（《卖炭翁》，卖炭得到钱用来做什么）"
+        ]
+      },
+      {
+        id: 3,
+        type: "动词",
+        sentence: "戒之在得。（《论语·季氏》）",
+        targetWord: "得",
+        options: {
+          A: "贪求；贪得",
+          B: "实现；达到",
+          C: "得意；满足"
+        },
+        correct: "A",
+        explanation: "“得”在这里作动词，意为“贪求；贪得”。句中是说要警戒贪得无厌的心理。",
+        examples: [
+          "多藏必厚亡，故知足不辱（《道德经》，讽刺贪得的人）",
+          "君子戒得，小人戒贫（君子警戒贪得，小人警戒贫困）"
+        ]
+      },
+      {
+        id: 4,
+        type: "动词",
+        sentence: "宋有狙公者，爱狙，养之成群，能解狙之意，狙亦得公之心。（《朝三暮四》）",
+        targetWord: "得",
+        options: {
+          A: "获得；得到",
+          B: "领会；理解",
+          C: "得意；满足"
+        },
+        correct: "B",
+        explanation: "“得”在这里作动词，意为“领会；理解”。句中是说宋国有个养猴子的人，喜爱猴子，养了一群，能理解猴子的意思，猴子也能领会他的心意。",
+        examples: [
+          "此言得之（《六国论》，这句话理解得对）",
+          "深得吾心（深深理解我的心意）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        sentence: "既得志则纵情以傲物。（《谏太宗十思疏》）",
+        targetWord: "得",
+        options: {
+          A: "实现；达到",
+          B: "获得；得到",
+          C: "能；能够"
+        },
+        correct: "A",
+        explanation: "“得”在这里作动词，意为“实现；达到”。句中是说已经实现了志愿，就放纵自己的情感而傲视他人。",
+        examples: [
+          "少年得志（年轻时就实现了志向）",
+          "得偿所愿（实现了愿望）"
+        ]
+      },
+      {
+        id: 6,
+        type: "动词",
+        sentence: "项王自度不得脱。（《垓下之战》）",
+        targetWord: "得",
+        options: {
+          A: "获得；得到",
+          B: "能；能够",
+          C: "实现；达到"
+        },
+        correct: "B",
+        explanation: "“得”在这里作动词，意为“能；能够”。句中是说项王自己估计不能逃脱。",
+        examples: [
+          "余因得遍观群书（《送东阳马生序》，我因此能够广泛阅读各种书籍）",
+          "不得要领（不能够抓住要点）"
+        ]
+      },
+      {
+        id: 7,
+        type: "形容词",
+        sentence: "当其欣于所遇，暂得于己，快然自足。（《兰亭集序》）",
+        targetWord: "得",
+        options: {
+          A: "合适；恰当",
+          B: "得意；满足",
+          C: "实现；达到"
+        },
+        correct: "B",
+        explanation: "“得”在这里作形容词，意为“得意；满足”。句中是说当他们对所接触的事物感到高兴，一时感到得意和满足，就会感到快乐和自足。",
+        examples: [
+          "洋洋自得（形容得意满足的样子）",
+          "得其所哉（得到合适的地方，形容心满意足）"
+        ]
+      },
+      {
+        id: 8,
+        type: "副词",
+        sentence: "君为我呼入，吾得兄事之。（《鸿门宴》）",
+        targetWord: "得",
+        options: {
+          A: "必须",
+          B: "能；能够",
+          C: "应该；应当"
+        },
+        correct: "C",
+        explanation: "“得”在这里作副词，意为“应该；应当”。句中是说你替我请他进来，我应该像对待兄长一样侍奉他。",
+        examples: [
+          "此事得从长计议（这件事应该从长计议）",
+          "得按规矩办事（应该按照规矩办事）"
+        ]
+      },
+      {
+        id: 9,
+        type: "助词",
+        sentence: "十三学得琵琶成，名属教坊第一部。（《琵琶行》）",
+        targetWord: "得",
+        options: {
+          A: "表示完成或结果",
+          B: "能；能够",
+          C: "应该；应当"
+        },
+        correct: "A",
+        explanation: "“得”在这里作助词，用于动词后，表示完成或结果。句中是说十三岁时学会了弹琵琶，技艺成熟，名字列入教坊的第一部。",
+        examples: [
+          "赢得仓皇北顾（《永遇乐·京口北固亭怀古》，落得仓皇回头北望的结果）",
+          "做得一手好菜（做菜的技艺达到某种结果）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

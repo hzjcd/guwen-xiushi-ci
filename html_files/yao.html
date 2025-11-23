@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 要</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">要</span>字练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "要"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "要"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词性与词义</h3>
+            
+            <div class="space-y-8 pl-2">
+              <p class="font-medium text-lg">要（yāo / yào）</p>
+              
+              <!-- 读音yāo的用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">读音：yāo</p>
+                
+                <!-- 名词用法 -->
+                <div class="mb-6">
+                  <p class="font-bold text-lg mb-2">（名词）</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① “腰”的古字</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：户服艾以盈要兮，谓幽兰其不可佩。（《楚辞》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 动词用法 -->
+                <div>
+                  <p class="font-bold text-lg mb-2">（动词）</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 约请；邀请</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：张良出，要项伯。（《史记·项羽本纪》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 约言。以明誓的方式就某事作出庄严的承诺或表示某种决心。亦指所订立的誓约、盟约</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：岂要黄河誓，须勒燕然石。（唐·崔湜《寒垣行》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 通“徼”。探求；求取</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：不庶几，不要幸。（《晏子春秋·内篇问下》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 通“邀”。拦阻；截击</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：张良出，要项伯。（《史记·项羽本纪》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 通“约”。胁迫</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：以要晋国之成。（《国语·晋语三》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 读音yào的用法 -->
+              <div>
+                <p class="font-bold text-cinnabar text-xl mb-4">读音：yào</p>
+                
+                <!-- 名词用法 -->
+                <div class="mb-6">
+                  <p class="font-bold text-lg mb-2">（名词）</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 要点，纲要</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：事在四方，要在中央。（《韩非子》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 计数的簿书</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：大役与虑，事属其植。受其要，以待考而赏诛。（《周礼》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 权柄</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：事在四方，要在中央，圣人执要，四方来效。（《韩非子》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">④ 指重要的地位或职务</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：以吾二人久居内要，常有不善之言，恐祸及人，深宜虑之。（《晋书》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑤ 总要</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：要以不能免。（宋·苏轼《教战守》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">⑥ 姓</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：要离之刺庆忌也，仓鹰击于殿上。（《战国策·魏策》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 形容词用法 -->
+                <div class="mb-6">
+                  <p class="font-bold text-lg mb-2">（形容词）</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 重要，重大</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：增减要语。（清·方苞《狱中杂记》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 简要</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：故明主好要，而暗主好详。（《荀子》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">③ 地位显要</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：北收要害之郡。（汉·贾谊《过秦论》）</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 动词用法 -->
+                <div>
+                  <p class="font-bold text-lg mb-2">（动词）</p>
+                  <div class="pl-4 space-y-4 mt-2">
+                    <div>
+                      <p class="font-medium">① 想要，希望</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：要汝知闻。（清·袁枚《祭妹文》）</p>
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium">② 使；让；叫</p>
+                      <p class="text-sm text-ink/70 italic mt-1">例：扫云物以贞观，要万涂而来归。（《文选·陆机·吊魏武帝文》）</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"要"有yāo和yào两种读音，需注意区分不同读音下的含义和用法</li>
+              <li>读yāo时多与"邀请"、"拦截"、"胁迫"等动作相关，且有多个通假用法</li>
+              <li>读yào时多表示"重要"、"要点"、"想要"等含义，使用更为广泛</li>
+              <li>注意"要"作为"腰"的古字用法，在先秦文献中较为常见</li>
+              <li>在判断词义时，可结合上下文和词性来区分"要"的不同含义</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"要"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "动词",
+        pronunciation: "yāo",
+        sentence: "张良出，要项伯。（《史记·项羽本纪》）",
+        targetWord: "要",
+        options: {
+          A: "想要",
+          B: "邀请",
+          C: "要求"
+        },
+        correct: "B",
+        explanation: "“要”在这里读yāo，作动词，意为“邀请”，描述张良出去邀请项伯的情景。",
+        examples: [
+          "便要还家，设酒杀鸡作食。（陶渊明《桃花源记》）",
+          "余乃召僮爚火，要遮而杀之。（马中锡《中山狼传》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "名词",
+        pronunciation: "yāo",
+        sentence: "户服艾以盈要兮，谓幽兰其不可佩。（《楚辞》）",
+        targetWord: "要",
+        options: {
+          A: "重要",
+          B: "要点",
+          C: "腰（古字）"
+        },
+        correct: "C",
+        explanation: "“要”在这里读yāo，是“腰”的古字，句意为人们腰间挂满艾草，却说幽兰不可佩戴。",
+        examples: [
+          "昔者，楚灵王好士细要。（《墨子·兼爱中》）",
+          "旦起，要脊皆痛。（《聊斋志异·促织》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "名词",
+        pronunciation: "yào",
+        sentence: "事在四方，要在中央。（《韩非子》）",
+        targetWord: "要",
+        options: {
+          A: "要点",
+          B: "需要",
+          C: "邀请"
+        },
+        correct: "A",
+        explanation: "“要”在这里读yào，作名词，意为“要点、关键”，句意为事情由四方办理，而关键在中央控制。",
+        examples: [
+          "此其要也。（《史记·太史公自序》）",
+          "不得要领。（《史记·大宛列传》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "形容词",
+        pronunciation: "yào",
+        sentence: "北收要害之郡。（汉·贾谊《过秦论》）",
+        targetWord: "要",
+        options: {
+          A: "需要",
+          B: "重要的",
+          C: "简要的"
+        },
+        correct: "B",
+        explanation: "“要”在这里读yào，作形容词，意为“重要的、关键的”，指北方收取重要的郡县。",
+        examples: [
+          "要害之处，通川之道。（《史记·秦始皇本纪》）",
+          "筑石寨土堡于要隘。（清·徐珂《清稗类钞·战事类》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "动词",
+        pronunciation: "yào",
+        sentence: "要汝知闻。（清·袁枚《祭妹文》）",
+        targetWord: "要",
+        options: {
+          A: "想要",
+          B: "要求",
+          C: "邀请"
+        },
+        correct: "A",
+        explanation: "“要”在这里读yào，作动词，意为“想要、希望”，表达希望对方知道的意思。",
+        examples: [
+          "要留清白在人间。（明·于谦《石灰吟》）",
+          "若要人不知，除非己莫为。（俗语）"
+        ]
+      },
+      {
+        id: 6,
+        type: "动词",
+        pronunciation: "yāo",
+        sentence: "以要晋国之成。（《国语·晋语三》）",
+        targetWord: "要",
+        options: {
+          A: "要求",
+          B: "胁迫",
+          C: "邀请"
+        },
+        correct: "B",
+        explanation: "“要”在这里读yāo，通“约”，作动词，意为“胁迫”，指用胁迫的方式达成与晋国的和议。",
+        examples: [
+          "使数人要于路。（《新唐书·陆贽传》）",
+          "要君者无上。（《孟子·公孙丑下》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "名词",
+        pronunciation: "yào",
+        sentence: "要离之刺庆忌也，仓鹰击于殿上。（《战国策·魏策》）",
+        targetWord: "要",
+        options: {
+          A: "要点",
+          B: "姓",
+          C: "想要"
+        },
+        correct: "B",
+        explanation: "“要”在这里读yào，作为姓氏使用，指刺客要离刺杀庆忌的故事。",
+        examples: [
+          "要离断臂，图报吴王。（《吴越春秋》）",
+          "要氏为春秋时期吴国大夫要离之后。（《百家姓考略》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions_yao')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions_yao', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+            <div class="p-2 bg-blue-50 border border-blue-200 rounded">
+              <span class="font-medium">读音：</span>${item.pronunciation}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions_yao', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "乎"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "乎"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">词类与词义</h3>
+            
+            <div class="space-y-6 pl-2">
+              <p class="font-medium text-lg">乎（hū）</p>
+              
+              <!-- 介词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（介词）</p>
+                <p class="text-base mt-2">相当于"于"</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 介绍处所、方向、时间。译为"在"、"由"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《赤壁赋》："相与枕藉乎舟中。"</p>
+                    <p class="text-sm text-ink/70 italic">例：《师说》："生乎吾前。"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 介绍比较对象。译为"与"、"对"、"比"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《庖丁解牛》："臣之所好者道也，进乎技矣。"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 介绍依凭的条件</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《庖丁解牛》："乎天理，批大郤。"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 介绍动作行为的对象</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《劝学》："君子博学而日参乎己。"</p>
+                    <p class="text-sm text-ink/70 italic">例：《捕蛇者说》："吾尝疑乎是。"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 助词用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（助词 - 语气词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 在句末，表示疑问，相当于"吗"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《鸿门宴》："壮士，能复饮乎?"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 用在句末，表示反问，相当于"吗"、"呢"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《鸿门宴》："日夜望将军至，岂敢反乎?"</p>
+                    <p class="text-sm text-ink/70 italic">例：《陈涉世家》："王候将相另有种乎?"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 用在句末，表示推测，相当于"吧"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《殽之战》："师劳力竭，远主备之，无乃不可乎?"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 用在句末，表示祈使，相当于"吧"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《冯谖客孟尝君》："长铗归来乎﹗出无车。"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑤ 用在句末，表示感叹，相当于"啊"、"呀"</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《归去来兮辞》："已矣乎﹗寓形宇内复几时"</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">⑥ 用在句中，表示停顿或舒缓</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：《召公谏厉王弭谤》："口之宣言也，善败于是乎兴。"</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 词缀用法 -->
+              <div>
+                <p class="font-bold text-cinnabar">（词缀）</p>
+                <div class="pl-4 mt-2">
+                  <p class="font-medium">① 用于形容词、叠音词后面</p>
+                  <p class="text-sm text-ink/70 italic mt-1">例：《庖丁解牛》："恢恢乎其于游刃有余矣。"</p>
+                  <p class="text-sm text-ink/70 italic">例：《赤壁赋》："浩浩乎如冯虚御风而不知其所止。"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"乎"最常见的用法是介词（相当于"于"）和语气助词</li>
+              <li>作介词时，主要介绍处所、时间、对象、比较等关系</li>
+              <li>作语气词时，根据语境可表达疑问、反问、推测、祈使或感叹等语气</li>
+              <li>作词缀时，多附在形容词后，增强形容的状态感</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"乎"字的练习题
+    const questions = [
+      {
+        id: 1,
+        type: "介词",
+        sentence: "相与枕藉乎舟中。（《赤壁赋》）",
+        targetWord: "乎",
+        options: {
+          A: "语气词，表疑问，相当于'吗'",
+          B: "介词，介绍处所，相当于'在'",
+          C: "词缀，用于形容词后"
+        },
+        correct: "B",
+        explanation: "“乎”在这里是介词，相当于“于”，介绍动作发生的处所，可译为“在”。句意为“大家互相枕着垫着睡在船中”。",
+        examples: [
+          "生乎吾前。（《师说》）",
+          "君子博学而日参乎己。（《劝学》）"
+        ]
+      },
+      {
+        id: 2,
+        type: "介词",
+        sentence: "臣之所好者道也，进乎技矣。（《庖丁解牛》）",
+        targetWord: "乎",
+        options: {
+          A: "介词，介绍比较对象，相当于'比'",
+          B: "语气词，表感叹，相当于'啊'",
+          C: "介词，介绍动作对象，相当于'对'"
+        },
+        correct: "A",
+        explanation: "“乎”在这里是介词，介绍比较的对象，相当于“比”。句意为“我所追求的是自然的规律，已经超过了对于宰牛技术的追求”。",
+        examples: [
+          "苛政猛于虎也。（《礼记·檀弓下》）",
+          "冰，水为之，而寒于水。（《劝学》）"
+        ]
+      },
+      {
+        id: 3,
+        type: "助词",
+        sentence: "壮士，能复饮乎?（《鸿门宴》）",
+        targetWord: "乎",
+        options: {
+          A: "词缀，用于形容词后",
+          B: "语气词，表反问，相当于'吗'",
+          C: "语气词，表疑问，相当于'吗'"
+        },
+        correct: "C",
+        explanation: "“乎”在这里是语气词，用在句末，表示疑问语气，相当于“吗”。这是一个一般疑问句，询问对方是否还能饮酒。",
+        examples: [
+          "汝识之乎？（《石钟山记》）",
+          "六国互丧，率赂秦耶？（《六国论》）"
+        ]
+      },
+      {
+        id: 4,
+        type: "助词",
+        sentence: "王候将相另有种乎?（《陈涉世家》）",
+        targetWord: "乎",
+        options: {
+          A: "语气词，表反问，相当于'吗'",
+          B: "介词，相当于'于'",
+          C: "语气词，表推测，相当于'吧'"
+        },
+        correct: "A",
+        explanation: "“乎”在这里是语气词，用在句末，表示反问语气，相当于“吗”。这句话表达了陈涉对封建等级制度的质疑和反抗精神。",
+        examples: [
+          "日夜望将军至，岂敢反乎?（《鸿门宴》）",
+          "学而时习之，不亦说乎？（《论语》）"
+        ]
+      },
+      {
+        id: 5,
+        type: "词缀",
+        sentence: "浩浩乎如冯虚御风而不知其所止。（《赤壁赋》）",
+        targetWord: "乎",
+        options: {
+          A: "语气词，表感叹，相当于'啊'",
+          B: "词缀，用于形容词后，增强状态感",
+          C: "介词，介绍处所，相当于'在'"
+        },
+        correct: "B",
+        explanation: "“乎”在这里作词缀，附在形容词“浩浩”之后，增强形容的状态感，可译为“……的样子”。句中用来形容江面广阔辽远的样子。",
+        examples: [
+          "恢恢乎其于游刃有余矣。（《庖丁解牛》）",
+          "飘飘乎如遗世独立，羽化而登仙。（《赤壁赋》）"
+        ]
+      },
+      {
+        id: 6,
+        type: "助词",
+        sentence: "已矣乎﹗寓形宇内复几时（《归去来兮辞》）",
+        targetWord: "乎",
+        options: {
+          A: "语气词，表感叹，相当于'啊'",
+          B: "语气词，表祈使，相当于'吧'",
+          C: "语气词，表推测，相当于'吧'"
+        },
+        correct: "A",
+        explanation: "“乎”在这里是语气词，用在句末，表示强烈的感叹语气，相当于“啊”。表达了作者对人生短暂的感慨。",
+        examples: [
+          "嗟乎！燕雀安知鸿鹄之志哉！（《陈涉世家》）",
+          "呜呼！孰知赋敛之毒有甚是蛇者乎！（《捕蛇者说》）"
+        ]
+      },
+      {
+        id: 7,
+        type: "助词",
+        sentence: "长铗归来乎﹗出无车。（《冯谖客孟尝君》）",
+        targetWord: "乎",
+        options: {
+          A: "语气词，表疑问，相当于'吗'",
+          B: "语气词，表祈使，相当于'吧'",
+          C: "介词，相当于'于'"
+        },
+        correct: "B",
+        explanation: "“乎”在这里是语气词，用在句末，表示祈使语气，相当于“吧”。这是冯谖弹铗而歌，表达自己的诉求。",
+        examples: [
+          "愿君顾先王之宗庙，姑反国统万人乎！（《战国策》）",
+          "勉速行乎！无重而罪！（《左传》）"
+        ]
+      },
+      {
+        id: 8,
+        type: "介词",
+        sentence: "吾尝疑乎是。（《捕蛇者说》）",
+        targetWord: "乎",
+        options: {
+          A: "介词，介绍动作对象，相当于'对'",
+          B: "语气词，表疑问，相当于'吗'",
+          C: "词缀，用于形容词后"
+        },
+        correct: "A",
+        explanation: "“乎”在这里是介词，介绍动作行为的对象，相当于“对”。句意为“我曾经对这句话表示怀疑”。",
+        examples: [
+          "君子博学而日参乎己。（《劝学》）",
+          "其闻道也固先乎吾。（《师说》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

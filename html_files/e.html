@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>古文实词虚词练习 - 恶</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- 配置Tailwind自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F5F1E6',
+            brown: {
+              light: '#D4B59E',
+              DEFAULT: '#B88E74',
+              dark: '#8B6E56'
+            },
+            ink: '#2D2D2A',
+            cinnabar: '#C83E4D'
+          },
+          fontFamily: {
+            title: ['"Ma Shan Zheng"', 'cursive'],
+            classic: ['"Noto Serif SC"', 'serif'],
+            sans: ['"Noto Sans SC"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .brush-border {
+        border-image: url('https://picsum.photos/id/96/100/100') 30 stretch;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .paper-edge {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), 
+                    0 0 0 1px rgba(139, 110, 86, 0.1) inset;
+      }
+      .ink-splash {
+        position: relative;
+      }
+      .ink-splash::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-image: url('https://picsum.photos/id/104/200/20');
+        background-size: cover;
+        opacity: 0.3;
+      }
+      .option-btn {
+        cursor: pointer;
+      }
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+      .pronunciation {
+        font-style: italic;
+        color: #8B6E56;
+      }
+    }
+  </style>
+  
+  <!-- 引入字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-paper bg-[url('https://picsum.photos/id/301/1000/1000')] bg-opacity-20 min-h-screen text-ink">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm border-b border-brown/30 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="font-title text-[clamp(1.5rem,3vw,2.5rem)] text-ink tracking-wide">
+        古文<span class="text-cinnabar">虚实</span>词练习
+      </h1>
+      
+      <!-- 错题本入口 -->
+      <button id="notebookBtn" class="flex items-center gap-2 bg-brown/10 hover:bg-brown/20 transition-all py-2 px-4 rounded-md border border-brown/30">
+        <i class="fa fa-book text-cinnabar text-xl"></i>
+        <span class="font-classic text-lg">错题本</span>
+        <span id="errorCount" class="bg-cinnabar text-white text-sm rounded-full w-6 h-6 flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6 md:py-10">
+    <!-- 练习区 -->
+    <section class="w-full">
+      <!-- "恶"字详解板块 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          "恶"字详解
+        </h2>
+        
+        <div class="space-y-6 font-classic">
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">读音、词类与词义</h3>
+            
+            <!-- è 读音用法 -->
+            <div class="mb-8">
+              <p class="font-medium text-lg">恶（<span class="pronunciation">è</span>）</p>
+              
+              <!-- 名词用法 -->
+              <div class="mt-4">
+                <p class="font-bold text-cinnabar">（名词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 过失</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：恶，过也。（《说文》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 泛指一般罪恶</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：恶积祸盈。（南朝齐·丘迟《与陈伯之书》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 恶人；坏人</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：元恶不待教而诛。（《荀子·王制》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 形容词用法 -->
+              <div class="mt-6">
+                <p class="font-bold text-cinnabar">（形容词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 丑陋</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：人莫知其子之恶。（《礼记·大学》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 坏；不好</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：廉君宣恶言。（《史记·廉颇蔺相如列传》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 污秽；肮脏</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：色恶不食，臭恶不食。（《论语·乡党》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 贫瘠</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：田虽薄恶，收可亩十石。（《齐民要术·耕田》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- wù 读音用法 -->
+            <div>
+              <p class="font-medium text-lg">恶（<span class="pronunciation">wù</span>）</p>
+              
+              <!-- 动词用法 -->
+              <div class="mt-4">
+                <p class="font-bold text-cinnabar">（动词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 讨厌；憎恶</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：天不为人之恶寒而辍冬。（《荀子·天论》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">② 嫉妒</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：表恶其能而不能用也。（《资治通鉴》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">③ 诽谤；中伤</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：人有恶苏秦于燕王者，曰:"武安君，天下不信人也。（《战国策》）</p>
+                  </div>
+                  
+                  <div>
+                    <p class="font-medium">④ 忌讳</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：大史典礼，执简记奉讳恶。（《礼记》）</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 形容词用法 -->
+              <div class="mt-6">
+                <p class="font-bold text-cinnabar">（形容词）</p>
+                <div class="pl-4 space-y-3 mt-2">
+                  <div>
+                    <p class="font-medium">① 羞耻，羞愧</p>
+                    <p class="text-sm text-ink/70 italic mt-1">例：无羞恶之心，非人也。（《孟子·公孙丑上》）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-3 text-ink border-b border-brown/30 pb-1">辨析要点</h3>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>"恶"是多音多义字，主要有è和wù两种读音，需结合语境判断</li>
+              <li>读è时多作名词（表过失、罪恶、恶人）或形容词（表丑陋、不好等）</li>
+              <li>读wù时多作动词（表讨厌、嫉妒、诽谤等），也可作形容词表羞耻</li>
+              <li>记忆技巧：表事物属性或名词概念时多读è；表心理活动或行为动作时多读wù</li>
+              <li>注意"恶"作形容词时的多义性，可描述人（丑陋）、事物（不好）、环境（污秽、贫瘠）等不同对象</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 选择题区域 -->
+      <div class="bg-paper rounded-lg p-6 md:p-8 paper-edge mb-6">
+        <h2 class="font-title text-2xl md:text-3xl mb-6 text-brown-dark ink-splash inline-block">
+          词义选择题
+        </h2>
+        
+        <!-- 题目显示区 -->
+        <div id="questionArea" class="mb-8">
+          <p id="questionText" class="font-classic text-lg md:text-xl leading-relaxed mb-6 p-4 bg-white/50 rounded border border-brown/20">
+            请选择下列句子中加点词的正确释义
+          </p>
+          
+          <!-- 选项区 -->
+          <div id="options" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              A. 选项一
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              B. 选项二
+            </button>
+            <button class="option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95">
+              C. 选项三
+            </button>
+          </div>
+        </div>
+        
+        <!-- 反馈区 -->
+        <div id="feedbackArea" class="hidden mb-6">
+          <div id="correctFeedback" class="hidden p-4 bg-green-50 border border-green-200 rounded-md mb-4">
+            <p class="text-green-700 font-medium">回答正确！看来你对这个字词的理解很到位～</p>
+          </div>
+          
+          <div id="wrongFeedback" class="hidden">
+            <p class="p-4 bg-red-50 border border-red-200 rounded-md mb-4 text-red-700 font-medium">
+              有点遗憾哦，再仔细想想～
+            </p>
+            
+            <div class="bg-white/70 p-4 rounded-md border border-brown/20 mb-4">
+              <p class="mb-2"><span class="font-bold">正确答案：</span><span id="correctAnswer" class="text-cinnabar font-medium"></span></p>
+              <p class="mb-2"><span class="font-bold">词义解析：</span><span id="explanation"></span></p>
+              <p class="mb-1"><span class="font-bold">例句：</span></p>
+              <ul id="examples" class="list-disc list-inside text-sm md:text-base pl-2 space-y-1">
+                <li>例句1</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button id="addErrorBtn" class="hidden bg-brown text-ink border border-brown-dark rounded-md py-2 px-6 font-medium hover:bg-brown/80 transition-all">
+              加入错题本
+            </button>
+            <button id="nextQuestionBtn" class="bg-ink text-paper rounded-md py-2 px-6 font-medium hover:bg-ink/80 transition-all">
+              下一题
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 错题本弹窗 -->
+  <div id="notebookModal" class="fixed inset-0 bg-ink/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-paper w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden border-2 border-brown relative">
+      <!-- 弹窗标题栏 -->
+      <div class="bg-brown/20 p-4 border-b border-brown/30 flex justify-between items-center">
+        <h2 class="font-title text-2xl text-ink">我的错题本</h2>
+        <div class="flex items-center gap-4">
+          <span class="font-classic"><span id="notebookCount">0</span> 道错题</span>
+          <button id="closeNotebook" class="text-ink hover:text-cinnabar transition-colors">
+            <i class="fa fa-times text-xl"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- 错题列表 -->
+      <div id="errorList" class="overflow-y-auto max-h-[calc(90vh-100px)] p-4 scrollbar-hide">
+        <div id="emptyNotebook" class="text-center py-12">
+          <i class="fa fa-book text-5xl text-brown/40 mb-4"></i>
+          <p class="font-classic text-ink/60">错题本还是空的哦～</p>
+          <p class="text-sm text-ink/50 mt-2">做错的题目会在这里显示</p>
+        </div>
+        
+        <div id="errorsContainer" class="space-y-6 hidden">
+          <!-- 错题项将通过JS动态添加 -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-ink/90 text-paper/80 py-6 mt-10">
+    <div class="container mx-auto px-4 text-center text-sm">
+      <p>古文实词虚词练习网站 &copy; 2023</p>
+      <p class="mt-1">专注高中文言文学习，助力高考</p>
+    </div>
+  </footer>
+
+  <script>
+    // 关于"恶"字的练习题
+    const questions = [
+      {
+        id: 1,
+        pronunciation: "è",
+        type: "名词",
+        sentence: "恶，过也。（《说文》）",
+        targetWord: "恶",
+        options: {
+          A: "罪恶",
+          B: "过失",
+          C: "恶人"
+        },
+        correct: "B",
+        explanation: "“恶”在这里读è，作名词，意为“过失”，指行为上的失误或过错，是“恶”字的基本义项之一。",
+        examples: [
+          "君子之过也，如日月之食焉：过也，人皆见之；更也，人皆仰之。（《论语》）",
+          "过则勿惮改。（《论语·学而》）"
+        ]
+      },
+      {
+        id: 2,
+        pronunciation: "è",
+        type: "名词",
+        sentence: "恶积祸盈。（南朝齐·丘迟《与陈伯之书》）",
+        targetWord: "恶",
+        options: {
+          A: "恶人",
+          B: "过失",
+          C: "罪恶"
+        },
+        correct: "C",
+        explanation: "“恶”在这里读è，作名词，泛指一般罪恶，句中表示罪恶积累到一定程度，灾祸也会随之而来，体现了古代善恶有报的思想。",
+        examples: [
+          "积善之家，必有余庆；积不善之家，必有余殃。（《周易》）",
+          "多行不义必自毙。（《左传》）"
+        ]
+      },
+      {
+        id: 3,
+        pronunciation: "è",
+        type: "名词",
+        sentence: "元恶不待教而诛。（《荀子·王制》）",
+        targetWord: "恶",
+        options: {
+          A: "罪恶",
+          B: "恶人",
+          C: "过失"
+        },
+        correct: "B",
+        explanation: "“恶”在这里读è，作名词，指“恶人”，句中“元恶”意为首恶、罪魁祸首，整句表示对首恶分子不必教育就可以诛杀。",
+        examples: [
+          "举直错诸枉，则民服；举枉错诸直，则民不服。（《论语》）",
+          "君子成人之美，不成人之恶。（《论语》）"
+        ]
+      },
+      {
+        id: 4,
+        pronunciation: "è",
+        type: "形容词",
+        sentence: "人莫知其子之恶。（《礼记·大学》）",
+        targetWord: "恶",
+        options: {
+          A: "不好",
+          B: "丑陋",
+          C: "污秽"
+        },
+        correct: "B",
+        explanation: "“恶”在这里读è，作形容词，意为“丑陋”，句中表示人们往往看不到自己子女的丑陋之处，体现了主观偏见的普遍性。",
+        examples: [
+          "吾妻之美我者，私我也；妾之美我者，畏我也。（《邹忌讽齐王纳谏》）",
+          "貌言华也，至言实也。（《孔子家语》）"
+        ]
+      },
+      {
+        id: 5,
+        pronunciation: "è",
+        type: "形容词",
+        sentence: "廉君宣恶言。（《史记·廉颇蔺相如列传》）",
+        targetWord: "恶",
+        options: {
+          A: "污秽",
+          B: "贫瘠",
+          C: "不好"
+        },
+        correct: "C",
+        explanation: "“恶”在这里读è，作形容词，意为“不好”，句中“恶言”指不好听的话、坏话，描述廉颇说了不当言论的情景。",
+        examples: [
+          "言有召祸也，行有招辱也。（《荀子》）",
+          "君子不失色于人，不失口于人。（《礼记》）"
+        ]
+      },
+      {
+        id: 6,
+        pronunciation: "è",
+        type: "形容词",
+        sentence: "色恶不食，臭恶不食。（《论语·乡党》）",
+        targetWord: "恶",
+        options: {
+          A: "丑陋",
+          B: "污秽",
+          C: "贫瘠"
+        },
+        correct: "B",
+        explanation: "“恶”在这里读è，作形容词，意为“污秽；肮脏”，句中描述孔子的饮食原则：颜色污秽的食物不吃，气味难闻的食物不吃。",
+        examples: [
+          "食不厌精，脍不厌细。（《论语·乡党》）",
+          "君子远庖厨。（《孟子》）"
+        ]
+      },
+      {
+        id: 7,
+        pronunciation: "wù",
+        type: "动词",
+        sentence: "天不为人之恶寒而辍冬。（《荀子·天论》）",
+        targetWord: "恶",
+        options: {
+          A: "嫉妒",
+          B: "忌讳",
+          C: "讨厌；憎恶"
+        },
+        correct: "C",
+        explanation: "“恶”在这里读wù，作动词，意为“讨厌；憎恶”，句中表示上天不会因为人们讨厌寒冷就停止冬天的到来，体现了荀子的自然观。",
+        examples: [
+          "好荣恶辱，好利恶害，是君子小人之所同也。（《荀子》）",
+          "贫与贱，是人之所恶也。（《论语》）"
+        ]
+      },
+      {
+        id: 8,
+        pronunciation: "wù",
+        type: "动词",
+        sentence: "表恶其能而不能用也。（《资治通鉴》）",
+        targetWord: "恶",
+        options: {
+          A: "嫉妒",
+          B: "诽谤",
+          C: "讨厌"
+        },
+        correct: "A",
+        explanation: "“恶”在这里读wù，作动词，意为“嫉妒”，句中表示刘表嫉妒他的才能而不能任用他，体现了人际间因才能差异产生的负面情绪。",
+        examples: [
+          "膑至，庞涓恐其贤于己，疾之。（《史记》）",
+          "世溷浊而嫉贤兮，好蔽美而称恶。（《离骚》）"
+        ]
+      },
+      {
+        id: 9,
+        pronunciation: "wù",
+        type: "动词",
+        sentence: "人有恶苏秦于燕王者。（《战国策》）",
+        targetWord: "恶",
+        options: {
+          A: "中伤",
+          B: "讨厌",
+          C: "忌讳"
+        },
+        correct: "A",
+        explanation: "“恶”在这里读wù，作动词，意为“诽谤；中伤”，句中表示有人在燕王面前诽谤苏秦，体现了战国时期纵横家所处的复杂政治环境。",
+        examples: [
+          "卒以此见嫉于邪党，构罪废斥。（《宋史》）",
+          "三人成虎，十夫揉椎。众口所移，毋翼而飞。（《战国策》）"
+        ]
+      },
+      {
+        id: 10,
+        pronunciation: "wù",
+        type: "形容词",
+        sentence: "无羞恶之心，非人也。（《孟子·公孙丑上》）",
+        targetWord: "恶",
+        options: {
+          A: "罪恶",
+          B: "羞耻",
+          C: "讨厌"
+        },
+        correct: "B",
+        explanation: "“恶”在这里读wù，作形容词，意为“羞耻”，句中是孟子提出的性善论观点，认为没有羞耻心的人不能称为人，体现了儒家对道德修养的重视。",
+        examples: [
+          "知耻近乎勇。（《礼记·中庸》）",
+          "人不可以无耻，无耻之耻，无耻矣。（《孟子》）"
+        ]
+      }
+    ];
+
+    let currentQuestion = null;
+    let selectedOption = null;
+    let errorQuestions = JSON.parse(localStorage.getItem('errorQuestions')) || [];
+
+    const questionTextEl = document.getElementById('questionText');
+    const optionsEl = document.getElementById('options');
+    const feedbackAreaEl = document.getElementById('feedbackArea');
+    const correctFeedbackEl = document.getElementById('correctFeedback');
+    const wrongFeedbackEl = document.getElementById('wrongFeedback');
+    const correctAnswerEl = document.getElementById('correctAnswer');
+    const explanationEl = document.getElementById('explanation');
+    const examplesEl = document.getElementById('examples');
+    const addErrorBtn = document.getElementById('addErrorBtn');
+    const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+    const notebookBtn = document.getElementById('notebookBtn');
+    const notebookModal = document.getElementById('notebookModal');
+    const closeNotebookBtn = document.getElementById('closeNotebook');
+    const errorListEl = document.getElementById('errorList');
+    const emptyNotebookEl = document.getElementById('emptyNotebook');
+    const errorsContainerEl = document.getElementById('errorsContainer');
+    const errorCountEl = document.getElementById('errorCount');
+    const notebookCountEl = document.getElementById('notebookCount');
+
+    function init() {
+      loadRandomQuestion();
+      updateErrorCount();
+      renderErrorNotebook();
+      
+      nextQuestionBtn.addEventListener('click', loadRandomQuestion);
+      addErrorBtn.addEventListener('click', addToErrorNotebook);
+      notebookBtn.addEventListener('click', openNotebook);
+      closeNotebookBtn.addEventListener('click', closeNotebook);
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', handleOptionSelect);
+      });
+    }
+
+    function loadRandomQuestion() {
+      selectedOption = null;
+      feedbackAreaEl.classList.add('hidden');
+      correctFeedbackEl.classList.add('hidden');
+      wrongFeedbackEl.classList.add('hidden');
+      addErrorBtn.classList.add('hidden');
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.removeEventListener('click', handleOptionSelect);
+      });
+      
+      const randomIndex = Math.floor(Math.random() * questions.length);
+      currentQuestion = questions[randomIndex];
+      
+      const highlightedSentence = currentQuestion.sentence.replace(
+        currentQuestion.targetWord, 
+        `<span class="text-cinnabar font-bold underline">${currentQuestion.targetWord}</span>`
+      );
+      questionTextEl.innerHTML = highlightedSentence;
+      
+      optionsEl.innerHTML = '';
+      Object.keys(currentQuestion.options).forEach(optionKey => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn bg-brown/10 hover:bg-brown/20 border border-brown/40 rounded-md py-3 px-4 font-classic text-base md:text-lg transition-all hover:shadow-md active:scale-95';
+        btn.innerHTML = `${optionKey}. ${currentQuestion.options[optionKey]}`;
+        btn.dataset.option = optionKey;
+        btn.disabled = false;
+        btn.addEventListener('click', handleOptionSelect, true);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(e) {
+      e.stopPropagation();
+      
+      if (selectedOption) return;
+      
+      const targetBtn = e.target.closest('.option-btn');
+      if (!targetBtn) return;
+      
+      selectedOption = targetBtn.dataset.option;
+      
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.dataset.option === selectedOption) {
+          if (selectedOption === currentQuestion.correct) {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-green-100', 'border-green-300');
+          } else {
+            btn.classList.remove('bg-brown/10', 'border-brown/40');
+            btn.classList.add('bg-red-100', 'border-red-300');
+          }
+        } else {
+          btn.classList.add('opacity-50');
+        }
+        btn.disabled = true;
+      });
+      
+      feedbackAreaEl.classList.remove('hidden');
+      
+      if (selectedOption === currentQuestion.correct) {
+        correctFeedbackEl.classList.remove('hidden');
+      } else {
+        wrongFeedbackEl.classList.remove('hidden');
+        correctAnswerEl.textContent = `${currentQuestion.correct}. ${currentQuestion.options[currentQuestion.correct]}`;
+        explanationEl.textContent = currentQuestion.explanation;
+        
+        examplesEl.innerHTML = '';
+        currentQuestion.examples.forEach(example => {
+          const li = document.createElement('li');
+          li.textContent = example;
+          examplesEl.appendChild(li);
+        });
+        
+        addErrorBtn.classList.remove('hidden');
+      }
+    }
+
+    function addToErrorNotebook() {
+      if (!currentQuestion || selectedOption === currentQuestion.correct) return;
+      
+      const exists = errorQuestions.some(item => item.id === currentQuestion.id);
+      if (!exists) {
+        errorQuestions.push({
+          ...currentQuestion,
+          userAnswer: selectedOption
+        });
+        
+        localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+        
+        updateErrorCount();
+        renderErrorNotebook();
+        
+        addErrorBtn.textContent = '已加入错题本';
+        addErrorBtn.classList.add('bg-green-100', 'border-green-300');
+        addErrorBtn.disabled = true;
+      }
+    }
+
+    function updateErrorCount() {
+      const count = errorQuestions.length;
+      errorCountEl.textContent = count;
+      notebookCountEl.textContent = count;
+    }
+
+    function renderErrorNotebook() {
+      if (errorQuestions.length === 0) {
+        emptyNotebookEl.classList.remove('hidden');
+        errorsContainerEl.classList.add('hidden');
+        return;
+      }
+      
+      emptyNotebookEl.classList.add('hidden');
+      errorsContainerEl.classList.remove('hidden');
+      errorsContainerEl.innerHTML = '';
+      
+      errorQuestions.forEach((item, index) => {
+        const errorItem = document.createElement('div');
+        errorItem.className = 'bg-white/60 rounded-lg p-4 border border-brown/20 relative';
+        
+        const highlightedSentence = item.sentence.replace(
+          item.targetWord, 
+          `<span class="text-cinnabar font-bold underline">${item.targetWord}</span>`
+        );
+        
+        errorItem.innerHTML = `
+          <button class="remove-error absolute top-2 right-2 text-ink/50 hover:text-cinnabar transition-colors" data-index="${index}">
+            <i class="fa fa-trash-o"></i>
+          </button>
+          <p class="font-classic mb-3">${highlightedSentence}</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3 text-sm">
+            <div class="p-2 bg-red-50 border border-red-200 rounded">
+              <span class="font-medium">你的答案：</span>${item.userAnswer}. ${item.options[item.userAnswer]}
+            </div>
+            <div class="p-2 bg-green-50 border border-green-200 rounded">
+              <span class="font-medium">正确答案：</span>${item.correct}. ${item.options[item.correct]}
+            </div>
+          </div>
+          <p class="mb-2 text-sm"><span class="font-bold">解析：</span>${item.explanation}</p>
+          <p class="text-sm"><span class="font-bold">例句：</span></p>
+          <ul class="list-disc list-inside text-xs pl-2 space-y-1 mb-2">
+            ${item.examples.map(example => `<li>${example}</li>`).join('')}
+          </ul>
+        `;
+        
+        errorsContainerEl.appendChild(errorItem);
+      });
+      
+      document.querySelectorAll('.remove-error').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          errorQuestions.splice(index, 1);
+          localStorage.setItem('errorQuestions', JSON.stringify(errorQuestions));
+          updateErrorCount();
+          renderErrorNotebook();
+        });
+      });
+    }
+
+    function openNotebook() {
+      notebookModal.classList.remove('hidden');
+      notebookModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNotebook() {
+      notebookModal.classList.add('hidden');
+      notebookModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    notebookModal.addEventListener('click', function(e) {
+      if (e.target === notebookModal) {
+        closeNotebook();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
